@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/7/2016 4:18:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SRVDESABI01"
+  DTS:CreatorName="SRVDESABI01\Administrator"
+  DTS:DTSID="{D830B48D-E690-4C7E-A557-D45D5437EB51}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ActualizarCobranza"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{5A0BA675-2AFE-4881-B134-ED7DCD5FE4EF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6F41A8BB-53F0-42BF-AB9A-5D5F555C6429}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FechaDesde">
+      <DTS:VariableValue
+        DTS:DataType="7">12/7/2016 4:33:29 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CBD16A21-9AB3-465B-BC8C-2B0852D747F4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FechaHasta">
+      <DTS:VariableValue
+        DTS:DataType="7">12/7/2016 4:33:21 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{00999FA9-4C9E-4CE5-9871-6F9C5E187721}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FechaLoop">
+      <DTS:VariableValue
+        DTS:DataType="7">12/7/2016 4:33:25 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Actualizar Cobranza de Saldos Mora"
+      DTS:AssignExpression="@FechaLoop = DATEADD(&quot;d&quot;,1, @FechaLoop)"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="Actualizar Cobranza de Saldos Mora"
+      DTS:DTSID="{1D8E7F3B-B7C3-4694-83EE-8E9E33490D90}"
+      DTS:EvalExpression="@FechaLoop &lt; @FechaHasta"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@FechaLoop"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Actualizar Cobranza de Saldos Mora">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Actualizar Cobranza de Saldos Mora\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B3E14831-B745-48A7-AE99-72EAC826E0EA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
+              SQLTask:SqlStatementSource="DECLARE @Fecha AS INT&#xA;DECLARE @FechaAnt AS INT&#xA;&#xA;SET @Fecha = CONVERT(VARCHAR(8),?,112)&#xA;&#xA;SELECT @FechaAnt = MAX(FSM.Fecha)&#xA;FROM FactsaldosMora FSM&#xA;WHERE FSM.Fecha &lt; @Fecha&#xA;&#xA;UPDATE FSM&#xA;SET FSM.Cobranza_Del_Dia = TBL.Cobranza&#xA;FROM FactsaldosMora FSM&#xA;RIGHT JOIN (&#xA;SELECT FSM1.Cod_Cliente, FSM1.Cod_Sucursal, FSM1.Cod_Empresa, FSM1.Cod_Grado_Mora, FSM1.Cod_Saldo_Mora_Cierre, SUM(FSM2.saldo) - SUM(FSM1.Saldo) Cobranza&#xA;FROM FactSaldosMora FSM1&#xA;LEFT JOIN FactSaldosMora FSM2&#xA;ON FSM1.Cod_Cliente = FSM2.Cod_Cliente&#xA;AND FSM1.Cod_Sucursal = FSM2.Cod_Sucursal &#xA;AND FSM1.Cod_Empresa = FSM2.Cod_Empresa&#xA;AND FSM1.Cod_Grado_Mora = FSM2.Cod_Grado_Mora&#xA;AND FSM1.Cod_Saldo_Mora_Cierre = FSM2.Cod_Saldo_Mora_Cierre&#xA;WHERE FSM1.Fecha = @Fecha&#xA;AND FSM2.Fecha = @FechaAnt&#xA;GROUP BY FSM1.Cod_Cliente, FSM1.Cod_Sucursal, FSM1.Cod_Empresa, FSM1.Cod_Grado_Mora, FSM1.Cod_Saldo_Mora_Cierre&#xA;HAVING SUM(FSM2.saldo) - SUM(FSM1.Saldo) != 0) AS TBL&#xA;ON FSM.Cod_Cliente = TBL.Cod_Cliente&#xA;AND FSM.Cod_Sucursal = TBL.Cod_Sucursal &#xA;AND FSM.Cod_Empresa = TBL.Cod_Empresa&#xA;AND FSM.Cod_Grado_Mora = TBL.Cod_Grado_Mora&#xA;AND FSM.Cod_Saldo_Mora_Cierre = TBL.Cod_Saldo_Mora_Cierre&#xA;AND FSM.Fecha = @Fecha" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::FechaLoop"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cargar Fechas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{221723A4-F576-4514-AEB1-827E93881C53}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar Fechas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FBCD144E-C80C-4428-B353-BEE98C85712E}"
+          SQLTask:SqlStatementSource="SELECT CONVERT(DATE,'20141220') AS FechaLoop, &#xA;&#x9;GETDATE() AS FechaHasta"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="FechaLoop"
+            SQLTask:DtsVariableName="User::FechaLoop" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="FechaHasta"
+            SQLTask:DtsVariableName="User::FechaHasta" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DAD6CB23-58C9-4A88-8555-6EEC1FB1253B}"
+      DTS:From="Package\Cargar Fechas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Actualizar Cobranza de Saldos Mora" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Cargar Fechas"
+          TopLeft="419,53" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Actualizar Cobranza de Saldos Mora\Execute SQL Task"
+          TopLeft="297,93" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="765,374"
+          Size="765,417"
+          Id="Package\Actualizar Cobranza de Saldos Mora"
+          TopLeft="108,139" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="491.25,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

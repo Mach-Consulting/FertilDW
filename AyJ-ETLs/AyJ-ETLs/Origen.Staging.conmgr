@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Origen Staging"
+  DTS:DTSID="{AE7F97C1-A8A6-4F54-8FE0-F2CFF772EBE8}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=SRVDESABI01;User ID=ETLUser;Initial Catalog=AyJStaging;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQCy2xuavx0Cd6U5ebSAWXgAAAAACAAAAAAAQZgAAAAEAACAAAAAO/QTMyceJfQhOPw3EZA0a51y0Jo1NqZNCyu0ccea/jQAAAAAOgAAAAAIAACAAAACadbujIjs6WRkqZAYh034S2gHHpP4Bm4BSNkhEAGoAd4AAAAChkWLK1B9OhAv2WU4WkW1sYJyFCLv6xaHiE4ndX822bXroHQzYBKnZ675YVPqLYUuogo/v00I4pF1QqNlvTAT3vYsyvO6XZ42BYpgxWsvYu653/ZW7xb70ZBNybtXApCAGyKxbGM60dP8QzzPSq9LfVVLF7sqW/FjOjfrsQBKx1kAAAACV6ESVKQm4YG9AYsueOB9/3IqlZyjwfGRctrmFVWIgZHQta9xcHTmr4MsEk4jQkWcgk6c/Y6/3kEdwYAbpyF9O</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
