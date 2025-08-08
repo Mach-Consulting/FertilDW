@@ -5,10 +5,8 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=SRVDESABI01;User ID=ETLUser;Initial Catalog=AyJStaging;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-      <DTS:Password
-        DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQCy2xuavx0Cd6U5ebSAWXgAAAAACAAAAAAAQZgAAAAEAACAAAADHFFqgR9HwEr3isVI7mQMouMeuzO439cdPJqlzYYWPiwAAAAAOgAAAAAIAACAAAADfnBrEUHXEm98uYeMKgIYuNJqIF9jSyzZFqUxmcqN43oAAAAAASgj7OkPtUtCv3CMKCG3FPPvmT00XNZAZtkqYqIhT5mv5WG2bUvqDb2mylUdLT+e79FpsEzqolIEmLnTuhM99T1Ew7lx7W+LDQL2PkcvvwYkxTiKb9ayHSzVb2bg735UJpjBbojlOdkSEImxCgm5DEhPZXSqk6kkoHH2iPCs+5UAAAACdggGq3UyqpwRpy8sCRxakcTCifaECe8c9pfPKs8U6LSQV+rRhCsdvgH1lZnVE1CUZQRe8VQCMtFg+Kup8mnj6</DTS:Password>
-    </DTS:ConnectionManager>
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=FERTILDW;Initial Catalog=AyJStaging;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-{FBCD144E-C80C-4428-B353-BEE98C85712E}Destino Staging;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

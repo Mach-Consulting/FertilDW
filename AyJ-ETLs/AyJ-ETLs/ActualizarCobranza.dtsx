@@ -7,12 +7,12 @@
   DTS:CreatorName="SRVDESABI01\Administrator"
   DTS:DTSID="{D830B48D-E690-4C7E-A557-D45D5437EB51}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
   DTS:LocaleID="1033"
   DTS:ObjectName="ActualizarCobranza"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{5A0BA675-2AFE-4881-B134-ED7DCD5FE4EF}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{39DD1F3A-7320-4316-9C9B-7E9114190BAB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -62,7 +62,7 @@
         <DTS:Executable
           DTS:refId="Package\Actualizar Cobranza de Saldos Mora\Execute SQL Task"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
+          DTS:Description="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:DTSID="{B3E14831-B745-48A7-AE99-72EAC826E0EA}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -88,7 +88,7 @@
     <DTS:Executable
       DTS:refId="Package\Cargar Fechas"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
+      DTS:Description="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:DTSID="{221723A4-F576-4514-AEB1-827E93881C53}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -126,17 +126,13 @@
 <!--If you manually edit this section and make a mistake, you can delete it. -->
 <!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
-  Version="sql12">
+  Version="8">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Cargar Fechas"
-          TopLeft="419,53" />
         <NodeLayout
           Size="163,42"
           Id="Package\Actualizar Cobranza de Saldos Mora\Execute SQL Task"
@@ -148,6 +144,10 @@
           Size="765,417"
           Id="Package\Actualizar Cobranza de Saldos Mora"
           TopLeft="108,139" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Cargar Fechas"
+          TopLeft="419,53" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="491.25,95">

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<DataTransformationsUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Configurations>
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <ServerName>SRVDESABI01</ServerName>
-        <PathOnServer>/SSISDB/Development/AyJ-ETLs</PathOnServer>
-        <Run64BitRuntime>true</Run64BitRuntime>
+        <AssessmentRuleSuppressionSetting />
+        <UseWinAuth>false</UseWinAuth>
+        <WinAuthUserName />
+        <WinAuthDomain />
+        <ServerName>FERTILDW</ServerName>
+        <PathOnServer>/SSISDB/Production/AyJ-ETLs</PathOnServer>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
@@ -23,7 +26,10 @@
     <Configuration>
       <Name>Testing</Name>
       <Options>
-        <Run64BitRuntime>true</Run64BitRuntime>
+        <AssessmentRuleSuppressionSetting />
+        <UseWinAuth>false</UseWinAuth>
+        <WinAuthUserName />
+        <WinAuthDomain />
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

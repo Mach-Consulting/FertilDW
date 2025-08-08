@@ -2,9 +2,21 @@
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="Origen ORACLE"
   DTS:DTSID="{C8764B35-4B6B-4178-BDCD-3901843A10CE}"
-  DTS:CreationName="OLEDB">
+  DTS:Description="Banka production DB"
+  DTS:CreationName="ORACLE">
   <DTS:ObjectData>
-    <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=OraclePROD;User ID=ayj;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;" />
+    <DTS:ConnectionManager>
+      <OraConnectionString>SERVER=//192.168.60.5:1521/orcl;USERNAME=ro_user;WINAUTH=0;</OraConnectionString>
+      <OraPassword
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQYhaWAhD8UmzFb7EcwBuAAAAAAACAAAAAAAQZgAAAAEAACAAAADa5vVt/v/D3L34YwLM2N8OjN+XVyclQ3g+qDWavNZtdgAAAAAOgAAAAAIAACAAAADvXDZwKQQczl2voBpCqM21VdQ6Ai+MBqGf5k9dvn+8+UAAAADXNfSAecYcTzfxSB4wKD9HGkkbayMNvjW9HAVfG78Q0Zs6hEtd7EofrxPCaryLaDL4f6MQrAPdDFzOJtTH8qdzQAAAAA84nfxJyg5o/jBoVT2W+Y7NvtYzC8OTXEIGzHCXkKI4vtFgwFqxJfy89M4xPADE6qHfkYdFZe7UlF5m8yZXnZM=</OraPassword>
+      <OraRetain>False</OraRetain>
+      <OraInitialCatalog></OraInitialCatalog>
+      <OraServerName>//192.168.60.5:1521/orcl</OraServerName>
+      <OraUserName>ro_user</OraUserName>
+      <OraOracleHome></OraOracleHome>
+      <OraOracleHome64></OraOracleHome64>
+      <OraWinAuthentication>False</OraWinAuthentication>
+      <OraEnableDetailedTracing>False</OraEnableDetailedTracing>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
