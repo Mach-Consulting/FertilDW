@@ -8,7 +8,7 @@
     <DTS:ConnectionManager>
       <OraConnectionString>SERVER=//192.168.60.5:1521/orcl;USERNAME=ro_user;WINAUTH=0;</OraConnectionString>
       <OraPassword
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQYhaWAhD8UmzFb7EcwBuAAAAAAACAAAAAAAQZgAAAAEAACAAAADa5vVt/v/D3L34YwLM2N8OjN+XVyclQ3g+qDWavNZtdgAAAAAOgAAAAAIAACAAAADvXDZwKQQczl2voBpCqM21VdQ6Ai+MBqGf5k9dvn+8+UAAAADXNfSAecYcTzfxSB4wKD9HGkkbayMNvjW9HAVfG78Q0Zs6hEtd7EofrxPCaryLaDL4f6MQrAPdDFzOJtTH8qdzQAAAAA84nfxJyg5o/jBoVT2W+Y7NvtYzC8OTXEIGzHCXkKI4vtFgwFqxJfy89M4xPADE6qHfkYdFZe7UlF5m8yZXnZM=</OraPassword>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQYhaWAhD8UmzFb7EcwBuAAAAAAACAAAAAAAQZgAAAAEAACAAAADe+UUcNDDHf+fCDzOX9W1BeVd5BIbgkr2XwHmWtWPn/wAAAAAOgAAAAAIAACAAAACGyHPIEYAX1AdRb3t4ufkpsDAC+wGm16pPyc3KOfK1gEAAAADeSM+udPmTQ9pEvqMxaN1VDuBSUAE2x+NHcDryyBvEcrSgUMibEyBixGUlFkmIbZiigzIl48q74O8AkAvA+yEdQAAAABr0fx1R3eBJNa8GmtdzaN51ha5BmwXN7ILCo+M1Lkxua8nFSGfCCppd1ayXmTSRHuV9Obi2kPHmg9SbOYOu1I4=</OraPassword>
       <OraRetain>False</OraRetain>
       <OraInitialCatalog></OraInitialCatalog>
       <OraServerName>//192.168.60.5:1521/orcl</OraServerName>

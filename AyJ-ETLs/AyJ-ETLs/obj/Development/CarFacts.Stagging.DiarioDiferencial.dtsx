@@ -12112,7 +12112,7 @@ FROM PARAMETROS_GENERALES</property>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script COMPOCLI"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -12730,7 +12730,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script DEADLINE"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -13359,7 +13359,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script PRESTAMOS_AUTORIZACIONES_DETA"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -13988,7 +13988,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script PRE_DEVENGAMIENTO"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -14617,7 +14617,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script PRE_SOLICITUDES"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -15246,7 +15246,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script SOLICITUDES_TAR"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -15875,7 +15875,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script TARJETAS_AUTORIZACIONES"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -16504,7 +16504,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script TARJETAS_AUTORIZACIONES_CLI"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="16">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -17133,7 +17133,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script TARJETAS_AUTORIZACIONES_DETA"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -17762,7 +17762,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script TARJETAS_LIQUIDA_CLI"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -18391,7 +18391,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script TARJETAS_LIQUIDA_CLI_DETA"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -19007,7 +19007,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Script USUARIOS_CONSUMO"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="17">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -29784,7 +29784,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE CALENDARIO_CLIENTE"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="15">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29801,7 +29801,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE CLIENTE"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="16">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29818,7 +29818,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE COMPOCLI"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29848,7 +29848,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE DEADLINE"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29878,7 +29878,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE GRADOS_MORA"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="17">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29895,7 +29895,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE PARAMETROS_GENERALES"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29912,7 +29912,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE PRESTAMOS_AUTORIZACIONES_DETA"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29942,7 +29942,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE PRE_DEVENGAMIENTO"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29972,7 +29972,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE PRE_SOLICITUDES"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30002,7 +30002,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SOLICITUDES_TAR"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30032,7 +30032,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SUCURSALES"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30049,7 +30049,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE TARJETAS"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30066,7 +30066,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE TARJETAS_AUTORIZACIONES"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30096,7 +30096,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE TARJETAS_AUTORIZACIONES_CLI"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="16">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30126,7 +30126,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE TARJETAS_AUTORIZACIONES_DETA"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30156,7 +30156,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE TARJETAS_LIQUIDA_CLI"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30186,7 +30186,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE TARJETAS_LIQUIDA_CLI_DETA"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -30216,7 +30216,7 @@ FROM TARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE USUARIOS_CONSUMO"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="17">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
