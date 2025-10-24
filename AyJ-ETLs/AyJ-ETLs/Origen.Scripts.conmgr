@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Origen Scripts"
+  DTS:DTSID="{6B977FF1-D607-4FF9-9298-951A42B5C187}"
+  DTS:CreationName="MULTIFILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:FileUsageType="2"
+      DTS:ConnectionString="D:\Projects\FertilDW\AyJ-ETLs\AyJ-ETLs\scripts" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

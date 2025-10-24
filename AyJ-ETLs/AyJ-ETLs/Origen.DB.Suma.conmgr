@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Origen DB Suma"
+  DTS:DTSID="{7401144A-3E13-48EF-8E7F-3F652DBCC4EB}"
+  DTS:Description="Suma Staging DB"
+  DTS:CreationName="ORACLE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager>
+      <OraConnectionString>SERVER=//192.168.50.4:1521/orcl;USERNAME=ro_user_w;WINAUTH=0;</OraConnectionString>
+      <OraPassword
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACH+jtwPvl06oUIFy65L08QAAAAACAAAAAAAQZgAAAAEAACAAAAAIkiiVPChvnEjk9I3ZNfKNJX0+DCqsIEd14hmlNB388gAAAAAOgAAAAAIAACAAAAAERSfSPh+K7NaI24NRtIWJ+D3+s6e9FG5QRI4zEYIfmUAAAACZVdtUqjsApbrvMFYhqmoSmzLZkQTDYn7TqYL9plP4iI562mbPWhHfBY71PwRFN1ji0Kjm3nnq+0FYK8UFu8o3QAAAAHbY+JYqW1iw4Q5z1FaNDYUM8km1lAUK0USpPAO6ZVQwAxLdGvm6sKvfsdeMIKoGO3pA+gOD+e6x3A8XPONz4O4=</OraPassword>
+      <OraRetain>False</OraRetain>
+      <OraInitialCatalog></OraInitialCatalog>
+      <OraServerName>//192.168.50.4:1521/orcl</OraServerName>
+      <OraUserName>ro_user_w</OraUserName>
+      <OraOracleHome></OraOracleHome>
+      <OraOracleHome64></OraOracleHome64>
+      <OraWinAuthentication>False</OraWinAuthentication>
+      <OraEnableDetailedTracing>False</OraEnableDetailedTracing>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
