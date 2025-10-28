@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SRVDESABI01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACH+jtwPvl06oUIFy65L08QAAAAACAAAAAAAQZgAAAAEAACAAAAAfaLoIQfbkiU7jfyb+OWiyg1mxwhc2rH9j9Jl4QK149wAAAAAOgAAAAAIAACAAAAA0N5gxJHEenZ0NIOjKLkdwyC+5zLelnvnc+NKUCJ8ygpAAAABQjQsZz99sLsBaufDlfb4O+/x7m6Y+sa0ElIhi+/U0IIC4i8Yzl4vGOqTs/W6EJIvuTApkMl3JkFzQQEAlBziG0iKHHTT914gRjo+eNjahXJaMpY0x3ssO/vddkqDL2tIgjsHK3TpwPq3uME7EK+p4+rytfqI4VIb7Y7q0lXkNHM8bxOy0aGiXJq9/q/8wki5AAAAAcglRnWRaZTT7mNdDPxsQvKgPE9VfxdAGD8pNqXBDjEla1rz1Poyypgvy+H5FPbcSA2UJx7oZTMbcwOBYobhQqg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACH+jtwPvl06oUIFy65L08QAAAAACAAAAAAAQZgAAAAEAACAAAAAyRFM10Jh/byACotNuwdf8b+QgDSk7f8G1cc1MoauNmAAAAAAOgAAAAAIAACAAAADPmCgn2bImvMJxakVrzw7iEAQFx82aYPIdNf4z6rT445AAAAD1p7ZMYmilAdZev1ZuNdYWFpGQaHFLlJF6GifZTjoWKYlUjZmmQFRHkrcOFYbeVk9if8Vp8Trv65q9eoQB5M9qXk8i8mFPugxGOtIzjZ8F/lTfYufFxbHLPE5cfBI9kADZFluawI8nHTXhEL9tXM5KjjO6l0ehK0kWJgbi+h/fFJS/4bNHzJ73uzLMSODjD9RAAAAAZ1jimu4VbK6cWwCwc75ffOI8Hc4DenR5tR05ld2vLYaquiPuVB8i1WVtprqAY7Oa7ndm8mSFXIJnFRwIV5x5jQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -2095,10 +2095,10 @@
                 <SSIS:Property SSIS:Name="Name">CargaDimensionesSuma</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">182</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">193</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B68BD328-ECA3-4FEF-8D67-C01C0A9BA6D9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4363E68F-5521-46C0-9313-D550F9DA077D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -2116,6 +2116,14 @@
     <ProjectItem>
       <Name>001_deploy_inicial_suma.sql</Name>
       <FullPath>001_deploy_inicial_suma.sql</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>EntidadesFertilSuma.xls</Name>
+      <FullPath>EntidadesFertilSuma.xls</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Suma_Movimientos_Query.sql</Name>
+      <FullPath>Suma_Movimientos_Query.sql</FullPath>
     </ProjectItem>
   </Miscellaneous>
   <Configurations>
