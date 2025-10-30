@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CargaDimensionesSuma"
   DTS:PackageType="5"
-  DTS:VersionBuild="194"
-  DTS:VersionGUID="{A51BA50C-F50E-40F0-8BBC-0E050C1F9AC4}">
+  DTS:VersionBuild="195"
+  DTS:VersionGUID="{90ABB56F-F062-408D-9848-ED965C8E09C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -42185,6 +42185,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:ObjectName="Constraint 46"
       DTS:To="Package\DTF_DimVerificacionTelefono" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 47]"
+      DTS:CreationName=""
+      DTS:DTSID="{4CBEB26F-E88E-491D-9A78-A8666E8DADD2}"
+      DTS:From="Package\DFT_DOMICILIOS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 47"
+      DTS:To="Package\DFT_CABAL_TARJETA" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{67DDF729-FA96-4577-BCC9-CB6CF17476E9}"
@@ -43647,6 +43655,40 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="56.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 47]"
+          TopLeft="617.333333333333,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135.833333333333,1257"
+              Start="0,0"
+              End="-135.833333333333,1249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,505.791425260719" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,505.791425260719"
+                    Point2="0,509.791425260719"
+                    Point3="-4,509.791425260719" />
+                  <mssgle:LineSegment
+                    End="-131.833333333333,509.791425260719" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-131.833333333333,509.791425260719"
+                    Point2="-135.833333333333,509.791425260719"
+                    Point3="-135.833333333333,513.791425260719" />
+                  <mssgle:LineSegment
+                    End="-135.833333333333,1249.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
