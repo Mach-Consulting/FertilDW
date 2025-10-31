@@ -348,6 +348,21 @@ CREATE TABLE [suma].[VERIFICACION_TELEFONO](
 	[TRACE_ID] [numeric](16, 0) NULL
 ) ON [PRIMARY]
 GO
+/****** Object:  Table [suma].[USUARIOS_CVU]    Script Date: 10/31/2025 11:18:08 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [suma].[USUARIOS_CVU](
+	[ID] [numeric](16, 0) NULL,
+	[ID_USUARIO_BIND] [numeric](16, 0) NULL,
+	[CVU] [varchar](22) NULL,
+	[ALIAS] [varchar](20) NULL,
+	[FECHA] [datetime] NULL
+) ON [PRIMARY]
+GO
 
 USE [AyJDW]
 GO
@@ -719,5 +734,20 @@ CREATE TABLE [suma].[DimVerificacionTelefono](
 	[Codigo] [numeric](16, 0) NULL,
 	[Estado] [numeric](16, 0) NULL,
 	[Trace_ID] [numeric](16, 0) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [suma].[DimUsuariosCVU]    Script Date: 10/31/2025 11:18:36 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [suma].[DimUsuariosCVU](
+	[Cod_UsuariosCVU] [numeric](16, 0) NULL,
+	[Cod_Usuario_BIND] [numeric](16, 0) NULL,
+	[CVU] [varchar](22) NULL,
+	[Alias] [varchar](20) NULL,
+	[Fecha] [datetime] NULL
 ) ON [PRIMARY]
 GO
