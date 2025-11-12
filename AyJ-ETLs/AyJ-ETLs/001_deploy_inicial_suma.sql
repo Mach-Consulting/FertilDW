@@ -702,7 +702,9 @@ CREATE TABLE [suma].[DimUsuarios](
 	[Created_At] [datetime] NULL,
 	[Cod_Sucursal_User] [numeric](16, 0) NULL,
 	[Cod_Sucursal] [numeric](16, 0) NULL,
-	[Valido_Foto] [varchar](20) NULL
+	[Valido_Foto] [varchar](20) NULL,
+	[Cod_Bind] [numeric](16, 0) NULL,
+	[Compartir_First] [varchar](10) NULL,
 ) ON [PRIMARY]
 GO
 /****** Object:  Table [suma].[DimUsuariosAprobacion]    Script Date: 10/24/2025 8:43:33 AM ******/

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CargaDimensionesSuma"
   DTS:PackageType="5"
-  DTS:VersionBuild="199"
-  DTS:VersionGUID="{A01D631C-E58D-4C4B-9ED2-E19F65EEE945}">
+  DTS:VersionBuild="200"
+  DTS:VersionGUID="{66B0F232-352E-4F7B-B390-185F6B75A3D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -22731,6 +22731,21 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedName="Valido_Foto"
                       externalMetadataColumnId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valido_Foto]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[Valido_Foto]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].Columns[ID_BIND]"
+                      cachedDataType="numeric"
+                      cachedName="ID_BIND"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Bind]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].Columns[COMPARTIR_FIRST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="COMPARTIR_FIRST"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Compartir_First]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -22841,6 +22856,17 @@ ORDER BY Cod_User, Fecha;</property>
                       dataType="str"
                       length="20"
                       name="Valido_Foto" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Bind]"
+                      dataType="numeric"
+                      name="Cod_Bind"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Compartir_First]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Compartir_First" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -22887,7 +22913,7 @@ ORDER BY Cod_User, Fecha;</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [suma].[DimUsuarios] SET [Apellido] = ?,[Cod_Cliente_BANKA] = ?,[Cod_Comercio] = ?,[Cod_Comercio_BANKA] = ?,[Cod_Padre] = ?,[Cod_Sucursal] = ?,[Cod_Sucursal_User] = ?,[Created_At] = ?,[CUIT] = ?,[DNI] = ?,[Email] = ?,[Estado] = ?,[Fecha_Activacion] = ?,[First_Login] = ?,[Last_Login] = ?,[Nombre] = ?,[PJ_REG] = ?,[Sexo] = ?,[Tipo] = ?,[Valido_Foto] = ? WHERE [Cod_Usuario] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [suma].[DimUsuarios] SET [Apellido] = ?,[Cod_Bind] = ?,[Cod_Cliente_BANKA] = ?,[Cod_Comercio] = ?,[Cod_Comercio_BANKA] = ?,[Cod_Padre] = ?,[Cod_Sucursal] = ?,[Cod_Sucursal_User] = ?,[Compartir_First] = ?,[Created_At] = ?,[CUIT] = ?,[DNI] = ?,[Email] = ?,[Estado] = ?,[Fecha_Activacion] = ?,[First_Login] = ?,[Last_Login] = ?,[Nombre] = ?,[PJ_REG] = ?,[Sexo] = ?,[Tipo] = ?,[Valido_Foto] = ? WHERE [Cod_Usuario] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -22918,73 +22944,88 @@ ORDER BY Cod_User, Fecha;</property>
                       externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[APELLIDO]" />
                     <inputColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID_BIND]"
+                      cachedDataType="numeric"
+                      cachedName="ID_BIND"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]" />
+                    <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID_CLIENTE_BANKA]"
                       cachedDataType="numeric"
                       cachedName="ID_CLIENTE_BANKA"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_CLIENTE_BANKA]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID_COMERCIO]"
                       cachedDataType="numeric"
                       cachedName="ID_COMERCIO"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID_COMERCIO_BANKA]"
                       cachedDataType="numeric"
                       cachedName="ID_COMERCIO_BANKA"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO_BANKA]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID_PADRE]"
                       cachedDataType="numeric"
                       cachedName="ID_PADRE"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_PADRE]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[NRO_SUCURSAL]"
                       cachedDataType="numeric"
                       cachedName="NRO_SUCURSAL"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[NRO_SUCURSAL]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[NRO_SUCURSAL_USER]"
                       cachedDataType="numeric"
                       cachedName="NRO_SUCURSAL_USER"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[NRO_SUCURSAL_USER]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID]"
                       cachedDataType="numeric"
                       cachedName="ID"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_20]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_22]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[COMPARTIR_FIRST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="COMPARTIR_FIRST"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[CREATED_AT]"
                       cachedDataType="dbTimeStamp"
                       cachedName="CREATED_AT"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[CREATED_AT]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[CUIT]"
                       cachedDataType="numeric"
                       cachedName="CUIT"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[CUIT]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[DNI]"
                       cachedDataType="numeric"
                       cachedName="DNI"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[DNI]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[EMAIL]"
@@ -22992,33 +23033,33 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="EMAIL"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[EMAIL]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[ESTADO]"
                       cachedDataType="numeric"
                       cachedName="ESTADO"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ESTADO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[FECHA_ACTIVACION]"
                       cachedDataType="dbTimeStamp"
                       cachedName="FECHA_ACTIVACION"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[FECHA_ACTIVACION]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[FIRST_LOGIN]"
                       cachedDataType="numeric"
                       cachedName="FIRST_LOGIN"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[FIRST_LOGIN]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[LAST_LOGIN]"
                       cachedDataType="dbTimeStamp"
                       cachedName="LAST_LOGIN"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[LAST_LOGIN]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[NOMBRE]"
@@ -23026,14 +23067,14 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="NOMBRE"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[NOMBRE]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[PJ_REG]"
                       cachedDataType="numeric"
                       cachedName="PJ_REG"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[PJ_REG]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[SEXO]"
@@ -23041,14 +23082,14 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SEXO"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[SEXO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[TIPO]"
                       cachedDataType="numeric"
                       cachedName="TIPO"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_20]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[TIPO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].Columns[Valido_Foto]"
@@ -23056,7 +23097,7 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="13"
                       cachedName="Valido_Foto"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_21]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[Valido_Foto]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -23148,50 +23189,50 @@ ORDER BY Cod_User, Fecha;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      dataType="dbTimeStamp"
-                      name="Param_7">
+                      dataType="numeric"
+                      name="Param_7"
+                      precision="16">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      dataType="numeric"
-                      name="Param_8"
-                      precision="16">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
-                      dataType="numeric"
-                      name="Param_9"
-                      precision="16">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Param_10">
+                      length="10"
+                      name="Param_8">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      dataType="dbTimeStamp"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="numeric"
+                      name="Param_10"
+                      precision="16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -23208,7 +23249,9 @@ ORDER BY Cod_User, Fecha;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
-                      dataType="dbTimeStamp"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
                       name="Param_12">
                       <properties>
                         <property
@@ -23242,21 +23285,8 @@ ORDER BY Cod_User, Fecha;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Param_15">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
                       dataType="numeric"
-                      name="Param_16"
+                      name="Param_15"
                       precision="16">
                       <properties>
                         <property
@@ -23266,10 +23296,21 @@ ORDER BY Cod_User, Fecha;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                      dataType="dbTimeStamp"
+                      name="Param_16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                       codePage="1252"
                       dataType="str"
-                      length="1"
+                      length="100"
                       name="Param_17">
                       <properties>
                         <property
@@ -23294,7 +23335,7 @@ ORDER BY Cod_User, Fecha;</property>
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
                       codePage="1252"
                       dataType="str"
-                      length="20"
+                      length="1"
                       name="Param_19">
                       <properties>
                         <property
@@ -23307,6 +23348,31 @@ ORDER BY Cod_User, Fecha;</property>
                       refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_20]"
                       dataType="numeric"
                       name="Param_20"
+                      precision="16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_21]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Param_21">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_22]"
+                      dataType="numeric"
+                      name="Param_22"
                       precision="16">
                       <properties>
                         <property
@@ -23368,7 +23434,7 @@ ORDER BY Cod_User, Fecha;</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [suma].[DimUsuarios] SET [Apellido] = ?,[Cod_Cliente_BANKA] = ?,[Cod_Comercio] = ?,[Cod_Comercio_BANKA] = ?,[Cod_Padre] = ?,[Cod_Sucursal] = ?,[Cod_Sucursal_User] = ?,[Created_At] = ?,[CUIT] = ?,[DNI] = ?,[Email] = ?,[Estado] = ?,[Fecha_Activacion] = ?,[First_Login] = ?,[Last_Login] = ?,[Nombre] = ?,[PJ_REG] = ?,[Sexo] = ?,[Tipo] = ?,[Valido_Foto] = ? WHERE [Cod_Usuario] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [suma].[DimUsuarios] SET [Apellido] = ?,[Cod_Bind] = ?,[Cod_Cliente_BANKA] = ?,[Cod_Comercio] = ?,[Cod_Comercio_BANKA] = ?,[Cod_Padre] = ?,[Cod_Sucursal] = ?,[Cod_Sucursal_User] = ?,[Compartir_First] = ?,[Created_At] = ?,[CUIT] = ?,[DNI] = ?,[Email] = ?,[Estado] = ?,[Fecha_Activacion] = ?,[First_Login] = ?,[Last_Login] = ?,[Nombre] = ?,[PJ_REG] = ?,[Sexo] = ?,[Tipo] = ?,[Valido_Foto] = ? WHERE [Cod_Usuario] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -23399,73 +23465,88 @@ ORDER BY Cod_User, Fecha;</property>
                       externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[APELLIDO]" />
                     <inputColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ID_BIND]"
+                      cachedDataType="numeric"
+                      cachedName="ID_BIND"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]" />
+                    <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ID_CLIENTE_BANKA]"
                       cachedDataType="numeric"
                       cachedName="ID_CLIENTE_BANKA"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_CLIENTE_BANKA]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ID_COMERCIO]"
                       cachedDataType="numeric"
                       cachedName="ID_COMERCIO"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ID_COMERCIO_BANKA]"
                       cachedDataType="numeric"
                       cachedName="ID_COMERCIO_BANKA"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO_BANKA]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ID_PADRE]"
                       cachedDataType="numeric"
                       cachedName="ID_PADRE"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_PADRE]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[NRO_SUCURSAL]"
                       cachedDataType="numeric"
                       cachedName="NRO_SUCURSAL"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[NRO_SUCURSAL]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[NRO_SUCURSAL_USER]"
                       cachedDataType="numeric"
                       cachedName="NRO_SUCURSAL_USER"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[NRO_SUCURSAL_USER]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ID]"
                       cachedDataType="numeric"
                       cachedName="ID"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_20]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_22]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[COMPARTIR_FIRST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="COMPARTIR_FIRST"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CREATED_AT]"
                       cachedDataType="dbTimeStamp"
                       cachedName="CREATED_AT"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[CREATED_AT]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CUIT]"
                       cachedDataType="numeric"
                       cachedName="CUIT"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[CUIT]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[DNI]"
                       cachedDataType="numeric"
                       cachedName="DNI"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[DNI]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[EMAIL]"
@@ -23473,33 +23554,33 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="EMAIL"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[EMAIL]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ESTADO]"
                       cachedDataType="numeric"
                       cachedName="ESTADO"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ESTADO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[FECHA_ACTIVACION]"
                       cachedDataType="dbTimeStamp"
                       cachedName="FECHA_ACTIVACION"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[FECHA_ACTIVACION]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[FIRST_LOGIN]"
                       cachedDataType="numeric"
                       cachedName="FIRST_LOGIN"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[FIRST_LOGIN]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[LAST_LOGIN]"
                       cachedDataType="dbTimeStamp"
                       cachedName="LAST_LOGIN"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[LAST_LOGIN]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[NOMBRE]"
@@ -23507,14 +23588,14 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="NOMBRE"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[NOMBRE]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[PJ_REG]"
                       cachedDataType="numeric"
                       cachedName="PJ_REG"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[PJ_REG]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[SEXO]"
@@ -23522,14 +23603,14 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SEXO"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[SEXO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[TIPO]"
                       cachedDataType="numeric"
                       cachedName="TIPO"
                       cachedPrecision="16"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_20]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[TIPO]" />
                     <inputColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Valido_Foto]"
@@ -23537,7 +23618,7 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedDataType="str"
                       cachedLength="13"
                       cachedName="Valido_Foto"
-                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_21]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[Valido_Foto]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -23629,50 +23710,50 @@ ORDER BY Cod_User, Fecha;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      dataType="dbTimeStamp"
-                      name="Param_7">
+                      dataType="numeric"
+                      name="Param_7"
+                      precision="16">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      dataType="numeric"
-                      name="Param_8"
-                      precision="16">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
-                      dataType="numeric"
-                      name="Param_9"
-                      precision="16">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Param_10">
+                      length="10"
+                      name="Param_8">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      dataType="dbTimeStamp"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="numeric"
+                      name="Param_10"
+                      precision="16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -23689,7 +23770,9 @@ ORDER BY Cod_User, Fecha;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
-                      dataType="dbTimeStamp"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
                       name="Param_12">
                       <properties>
                         <property
@@ -23723,21 +23806,8 @@ ORDER BY Cod_User, Fecha;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Param_15">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
                       dataType="numeric"
-                      name="Param_16"
+                      name="Param_15"
                       precision="16">
                       <properties>
                         <property
@@ -23747,10 +23817,21 @@ ORDER BY Cod_User, Fecha;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                      dataType="dbTimeStamp"
+                      name="Param_16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                       codePage="1252"
                       dataType="str"
-                      length="1"
+                      length="100"
                       name="Param_17">
                       <properties>
                         <property
@@ -23775,7 +23856,7 @@ ORDER BY Cod_User, Fecha;</property>
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
                       codePage="1252"
                       dataType="str"
-                      length="20"
+                      length="1"
                       name="Param_19">
                       <properties>
                         <property
@@ -23788,6 +23869,31 @@ ORDER BY Cod_User, Fecha;</property>
                       refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_20]"
                       dataType="numeric"
                       name="Param_20"
+                      precision="16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_21]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Param_21">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_22]"
+                      dataType="numeric"
+                      name="Param_22"
                       precision="16">
                       <properties>
                         <property
@@ -23843,7 +23949,7 @@ ORDER BY Cod_User, Fecha;</property>
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Apellido], [Cod_Cliente_BANKA], [Cod_Comercio], [Cod_Comercio_BANKA], [Cod_Padre], [Cod_Sucursal], [Cod_Sucursal_User], [Cod_Usuario], [Created_At], [CUIT], [DNI], [Email], [Estado], [Fecha_Activacion], [First_Login], [Last_Login], [Nombre], [PJ_REG], [Sexo], [Tipo], [Valido_Foto] FROM [suma].[DimUsuarios]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Apellido], [Cod_Bind], [Cod_Cliente_BANKA], [Cod_Comercio], [Cod_Comercio_BANKA], [Cod_Padre], [Cod_Sucursal], [Cod_Sucursal_User], [Cod_Usuario], [Compartir_First], [Created_At], [CUIT], [DNI], [Email], [Estado], [Fecha_Activacion], [First_Login], [Last_Login], [Nombre], [PJ_REG], [Sexo], [Tipo], [Valido_Foto] FROM [suma].[DimUsuarios]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -23899,6 +24005,20 @@ ORDER BY Cod_User, Fecha;</property>
                       cachedName="APELLIDO"
                       externalMetadataColumnId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Apellido]"
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[APELLIDO]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ID_BIND]"
+                      cachedDataType="numeric"
+                      cachedName="ID_BIND"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Cod_Bind]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -24002,6 +24122,21 @@ ORDER BY Cod_User, Fecha;</property>
                           dataType="System.Int32"
                           name="ColumnType"
                           typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[COMPARTIR_FIRST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="COMPARTIR_FIRST"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Compartir_First]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -24197,6 +24332,11 @@ ORDER BY Cod_User, Fecha;</property>
                       length="100"
                       name="Apellido" />
                     <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Cod_Bind]"
+                      dataType="numeric"
+                      name="Cod_Bind"
+                      precision="16" />
+                    <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Cod_Cliente_BANKA]"
                       dataType="numeric"
                       name="Cod_Cliente_BANKA"
@@ -24231,6 +24371,12 @@ ORDER BY Cod_User, Fecha;</property>
                       dataType="numeric"
                       name="Cod_Usuario"
                       precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Compartir_First]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Compartir_First" />
                     <externalMetadataColumn
                       refId="Package\DFT_DimUsuarios\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Created_At]"
                       dataType="dbTimeStamp"
@@ -24376,7 +24522,7 @@ ORDER BY Cod_User, Fecha;</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT u.ID, u.EMAIL, u.NOMBRE, u.APELLIDO, u.DNI, u.CUIT, u.FIRST_LOGIN, u.LAST_LOGIN, u.ESTADO, u.SEXO, u.ID_CLIENTE_BANKA, u.ID_COMERCIO_BANKA, u.TIPO, u.ID_PADRE, u.ID_COMERCIO, u.PJ_REG,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT u.ID, u.EMAIL, u.NOMBRE, u.APELLIDO, u.DNI, u.CUIT, u.FIRST_LOGIN, u.LAST_LOGIN, u.ESTADO, u.SEXO, u.ID_CLIENTE_BANKA, u.ID_COMERCIO_BANKA, u.TIPO, u.ID_PADRE, u.ID_COMERCIO, u.PJ_REG, u.ID_BIND, u.COMPARTIR_FIRST,
 u.FECHA_ACTIVACION, u.CREATED_AT, u.NRO_SUCURSAL as NRO_SUCURSAL_USER, COALESCE(c.NRO_SUCURSAL, u.NRO_SUCURSAL) as NRO_SUCURSAL,
 CASE WHEN PJ_REG &lt; 2 THEN 'INGRESADO' WHEN PJ_REG = 2 THEN 'BIOMETRICO AP' WHEN PJ_REG = 3 THEN 'ACTIVADO' WHEN PJ_REG = 9 THEN 'RECHAZADO' ELSE 'NO ACTIVO' END as Valido_Foto 
 FROM [suma].[USUARIOS] u
@@ -24632,6 +24778,27 @@ LEFT JOIN [suma].[CIUDADES] c ON d.ID_CIUDADES = c.ID</property>
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[Valido_Foto]"
                       name="Valido_Foto"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_BIND]"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]"
+                      name="ID_BIND"
+                      precision="16"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPARTIR_FIRST]"
+                      length="10"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]"
+                      name="COMPARTIR_FIRST"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -24742,6 +24909,17 @@ LEFT JOIN [suma].[CIUDADES] c ON d.ID_CIUDADES = c.ID</property>
                       dataType="str"
                       length="13"
                       name="Valido_Foto" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_BIND]"
+                      dataType="numeric"
+                      name="ID_BIND"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPARTIR_FIRST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="COMPARTIR_FIRST" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -24848,6 +25026,19 @@ LEFT JOIN [suma].[CIUDADES] c ON d.ID_CIUDADES = c.ID</property>
                       lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Error Output].Columns[PJ_REG]"
                       name="PJ_REG"
                       precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Error Output].Columns[ID_BIND]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Error Output].Columns[ID_BIND]"
+                      name="ID_BIND"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Error Output].Columns[COMPARTIR_FIRST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Error Output].Columns[COMPARTIR_FIRST]"
+                      name="COMPARTIR_FIRST" />
                     <outputColumn
                       refId="Package\DFT_DimUsuarios\Source Staging.Outputs[OLE DB Source Error Output].Columns[FECHA_ACTIVACION]"
                       dataType="dbTimeStamp"
@@ -49086,21 +49277,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\DFT_DimUsuarios\Source Staging"
           TopLeft="241,5.49999999999989" />
         <NodeLayout
-          Size="182,42"
-          Id="Package\DFT_DimUsuarios\OLE DB Command 1"
-          TopLeft="465,209.5" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DFT_DimUsuarios\OLE DB Command"
-          TopLeft="231.5,209.5" />
-        <NodeLayout
           Size="216,42"
           Id="Package\DFT_DimUsuarios\Slowly Changing Dimension"
           TopLeft="210,107.5" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\DFT_DimUsuarios\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\DFT_DimUsuarios.Paths[OLE DB Source Output]"
           TopLeft="318,47.4999999999999">
@@ -49123,6 +49302,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\DFT_DimUsuarios\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\DFT_DimUsuarios.Paths[New Output]"
           TopLeft="266,149.5">
@@ -49159,6 +49342,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\DFT_DimUsuarios\OLE DB Command"
+          TopLeft="231.5,209.5" />
         <EdgeLayout
           Id="Package\DFT_DimUsuarios.Paths[Inferred Member Updates Output]"
           TopLeft="318,149.5">
@@ -49183,6 +49370,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\DFT_DimUsuarios\OLE DB Command 1"
+          TopLeft="465,209.5" />
         <EdgeLayout
           Id="Package\DFT_DimUsuarios.Paths[Changing Attribute Updates Output]"
           TopLeft="370,149.5">
@@ -49240,6 +49431,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source Staging.Outputs[OLE DB Source Output].Columns[ID_BIND]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Cod_Bind&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Source Staging.Outputs[OLE DB Source Output].Columns[ID_CLIENTE_BANKA]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Cod_Cliente_BANKA&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
@@ -49280,6 +49477,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       &lt;ColumnName&gt;Cod_Usuario&lt;/ColumnName&gt;
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source Staging.Outputs[OLE DB Source Output].Columns[COMPARTIR_FIRST]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Compartir_First&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Source Staging.Outputs[OLE DB Source Output].Columns[CREATED_AT]&lt;/IdentificationString&gt;
