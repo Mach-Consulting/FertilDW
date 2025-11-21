@@ -8,7 +8,7 @@
         <UseWinAuth>false</UseWinAuth>
         <WinAuthUserName />
         <WinAuthDomain />
-        <ServerName>FERTILDW</ServerName>
+        <ServerName>DWDEV</ServerName>
         <PathOnServer>/SSISDB/Production/AyJ-ETLs</PathOnServer>
         <UserIDs />
         <UserPasswords />

@@ -11,8 +11,9 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ActualizarCobranza"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{DD7AC8DC-703F-4107-834F-4EF316CFC425}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{0571DEE9-39EC-4EA3-BCD2-FDF500E19FCE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -99,7 +100,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{FBCD144E-C80C-4428-B353-BEE98C85712E}"
-          SQLTask:SqlStatementSource="SELECT CONVERT(DATE,'20211220') AS FechaLoop, &#xA;&#x9;GETDATE() AS FechaHasta"
+          SQLTask:SqlStatementSource="SELECT CONVERT(DATE,'20211220') AS FechaLoop, &#xA; GETDATE() AS FechaHasta"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="FechaLoop"
