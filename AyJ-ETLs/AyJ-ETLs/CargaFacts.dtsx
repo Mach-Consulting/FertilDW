@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="304"
-  DTS:VersionGUID="{127B15D3-BE09-4B0A-A26D-99785FF26FEB}">
+  DTS:VersionBuild="307"
+  DTS:VersionGUID="{441CAECC-AF8B-4417-8E6F-A3CCE022EA7F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -8789,7 +8789,8 @@ WHERE DLC.FECHA_CIERRE BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</pro
 		MAX(ISNULL(TLCD.TOTAL,0)) AS Total,
 		MAX(ISNULL(TLC.NROCUO,0)) AS Numero_Cuota,
 		MAX(ISNULL(TLC.CANCUO,0)) AS Cantidad_Cuotas,
-		MAX(ISNULL(TLC.IMPORTE_CUOTA,0)) AS Importe_Cuota
+		MAX(ISNULL(TLC.IMPORTE_CUOTA,0)) AS Importe_Cuota,
+	                  MAX(ISNULL(TLCD.ID_CLIENTE,0)) AS Cod_Cliente
 FROM [dbo].[TARJETAS_LIQUIDA_CLI_DETA] TLCD
 LEFT JOIN [dbo].[TARJETAS_LIQUIDA_CLI] TLC
 ON TLCD.[ID_LIQUIDACION_CLI]=TLC.[ID_LIQUIDACION_CLI]
@@ -9040,6 +9041,16 @@ GROUP BY TLCD.ID_LIQUIDACION_CLI</property>
                           name="Cancelacion_Total"
                           precision="10"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].Columns[Cod_Cliente]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].ExternalColumns[Cod_Cliente]"
+                          lineageId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].Columns[Cod_Cliente]"
+                          name="Cod_Cliente"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -9152,6 +9163,11 @@ GROUP BY TLCD.ID_LIQUIDACION_CLI</property>
                           refId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].ExternalColumns[Cancelacion_Total]"
                           dataType="numeric"
                           name="Cancelacion_Total"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].ExternalColumns[Cod_Cliente]"
+                          dataType="numeric"
+                          name="Cod_Cliente"
                           precision="10" />
                       </externalMetadataColumns>
                     </output>
@@ -9290,6 +9306,12 @@ GROUP BY TLCD.ID_LIQUIDACION_CLI</property>
                           name="Importe_Cuota"
                           precision="14"
                           scale="2" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Error Output].Columns[Cod_Cliente]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Error Output].Columns[Cod_Cliente]"
+                          name="Cod_Cliente"
+                          precision="10" />
                         <outputColumn
                           refId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -9575,6 +9597,13 @@ GROUP BY TLCD.ID_LIQUIDACION_CLI</property>
                           cachedPrecision="10"
                           externalMetadataColumnId="Package\DW\Carga FactLiquidaciones\FactLiquidaciones.Inputs[OLE DB Destination Input].ExternalColumns[Cancelacion_Total]"
                           lineageId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].Columns[Cancelacion_Total]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactLiquidaciones\FactLiquidaciones.Inputs[OLE DB Destination Input].Columns[Cod_Cliente]"
+                          cachedDataType="numeric"
+                          cachedName="Cod_Cliente"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactLiquidaciones\FactLiquidaciones.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Cliente]"
+                          lineageId="Package\DW\Carga FactLiquidaciones\AyJ Stagging.Outputs[OLE DB Source Output].Columns[Cod_Cliente]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -9673,6 +9702,11 @@ GROUP BY TLCD.ID_LIQUIDACION_CLI</property>
                           refId="Package\DW\Carga FactLiquidaciones\FactLiquidaciones.Inputs[OLE DB Destination Input].ExternalColumns[Cancelacion_Total]"
                           dataType="numeric"
                           name="Cancelacion_Total"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactLiquidaciones\FactLiquidaciones.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Cliente]"
+                          dataType="numeric"
+                          name="Cod_Cliente"
                           precision="10" />
                       </externalMetadataColumns>
                     </input>
@@ -44808,7 +44842,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="16">
+          DTS:ThreadHint="21">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44825,7 +44859,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="17">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44855,7 +44889,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44885,7 +44919,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobranzas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44915,7 +44949,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobros"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="19">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44945,7 +44979,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobrosJudiciales"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="18">
+          DTS:ThreadHint="20">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44975,7 +45009,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCompras"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="19">
+          DTS:ThreadHint="17">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45005,7 +45039,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactConsumos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="18">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45035,7 +45069,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCuentasCorrientes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="15">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45065,7 +45099,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactDeadline"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="24">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45095,7 +45129,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactDevengamientoPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="16">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45125,7 +45159,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactGestiones"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45155,7 +45189,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="22">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45185,7 +45219,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactIngresosPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="23">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45215,7 +45249,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="24">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45245,7 +45279,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidaciones"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="21">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45275,7 +45309,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45305,7 +45339,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPagosComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="22">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45335,7 +45369,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPasajesJudiciales"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="23">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45365,7 +45399,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPlasticos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45395,7 +45429,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPromocionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45412,7 +45446,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSaldosMora"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45442,7 +45476,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSolicitudes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45472,7 +45506,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSolicitudesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45502,7 +45536,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactSolicitudesRapidas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="20">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -49182,12 +49216,6 @@ FROM SALDOSTARJETAS</property>
                           externalMetadataColumnId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Total_Tarjeta]"
                           lineageId="Package\Saldos\Carga SaldosTarjetas\Source Staging.Outputs[OLE DB Source Output].Columns[SALDO_TOTAL_TARJETA]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].Columns[ID]"
-                          cachedDataType="r8"
-                          cachedName="ID"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Cod_SaldosTarjetas]"
-                          lineageId="Package\Saldos\Carga SaldosTarjetas\Source Staging.Outputs[OLE DB Source Output].Columns[ID]" />
-                        <inputColumn
                           refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].Columns[ID_EMPRESA]"
                           cachedDataType="r8"
                           cachedName="ID_EMPRESA"
@@ -49199,6 +49227,12 @@ FROM SALDOSTARJETAS</property>
                           cachedName="ID_SUCURSAL"
                           externalMetadataColumnId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal]"
                           lineageId="Package\Saldos\Carga SaldosTarjetas\Source Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].Columns[ID]"
+                          cachedDataType="r8"
+                          cachedName="ID"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Cliente]"
+                          lineageId="Package\Saldos\Carga SaldosTarjetas\Source Staging.Outputs[OLE DB Source Output].Columns[ID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -49218,10 +49252,6 @@ FROM SALDOSTARJETAS</property>
                           dataType="str"
                           length="40"
                           name="Nombre" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Cod_SaldosTarjetas]"
-                          dataType="r8"
-                          name="Cod_SaldosTarjetas" />
                         <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
                           dataType="r8"
@@ -49280,6 +49310,10 @@ FROM SALDOSTARJETAS</property>
                           refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Total_Tarjeta]"
                           dataType="r8"
                           name="Saldo_Total_Tarjeta" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Cliente]"
+                          dataType="r8"
+                          name="Cod_Cliente" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -49364,7 +49398,7 @@ FROM SALDOSTARJETAS</property>
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{AE7F97C1-A8A6-4F54-8FE0-F2CFF772EBE8}"
+              SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
               SQLTask:SqlStatementSource="TRUNCATE TABLE SaldosTarjetas" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -52434,6 +52468,27 @@ FROM SALDOSTARJETAS</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Carga FactLiquidaciones\FactLiquidaciones">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Carga FactLiquidaciones\AyJ Stagging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DW\Carga FactPagosComercios">
     <LayoutInfo>
@@ -56847,13 +56902,17 @@ FROM SALDOSTARJETAS</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="161,42"
+          Id="Package\Saldos\Carga SaldosBase\Data Conversion"
+          TopLeft="164,169" />
+        <NodeLayout
           Size="154,42"
           Id="Package\Saldos\Carga SaldosBase\Source Staging"
           TopLeft="65,53" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Saldos\Carga SaldosBase\Data Conversion"
-          TopLeft="164,169" />
+          Size="163,42"
+          Id="Package\Saldos\Carga SaldosBase\SQL SaldosBase"
+          TopLeft="364,275" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosBase.Paths[OLE DB Source Output]"
           TopLeft="142,95">
@@ -56888,10 +56947,6 @@ FROM SALDOSTARJETAS</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Saldos\Carga SaldosBase\SQL SaldosBase"
-          TopLeft="364,275" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosBase.Paths[Data Conversion Output]"
           TopLeft="244.5,211">
@@ -56951,13 +57006,17 @@ FROM SALDOSTARJETAS</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154,42"
-          Id="Package\Saldos\Carga SaldosCapitalBase\Source Staging"
-          TopLeft="68,64" />
+          Size="197,42"
+          Id="Package\Saldos\Carga SaldosCapitalBase\SQL SaldosCapitalBase"
+          TopLeft="450,264" />
         <NodeLayout
           Size="161,42"
           Id="Package\Saldos\Carga SaldosCapitalBase\Data Conversion"
           TopLeft="223,177" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Saldos\Carga SaldosCapitalBase\Source Staging"
+          TopLeft="68,64" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosCapitalBase.Paths[OLE DB Source Output]"
           TopLeft="145,106">
@@ -56992,10 +57051,6 @@ FROM SALDOSTARJETAS</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Saldos\Carga SaldosCapitalBase\SQL SaldosCapitalBase"
-          TopLeft="450,264" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosCapitalBase.Paths[Data Conversion Output]"
           TopLeft="303.5,219">
@@ -57055,13 +57110,17 @@ FROM SALDOSTARJETAS</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="161,42"
+          Id="Package\Saldos\Carga SaldosPrestamos\Data Conversion"
+          TopLeft="237.5,107.5" />
+        <NodeLayout
           Size="135,42"
           Id="Package\Saldos\Carga SaldosPrestamos\Source DW"
           TopLeft="250.5,5.49999999999989" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Saldos\Carga SaldosPrestamos\Data Conversion"
-          TopLeft="237.5,107.5" />
+          Size="190,42"
+          Id="Package\Saldos\Carga SaldosPrestamos\SQL SaldosPrestamos"
+          TopLeft="328,205" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosPrestamos.Paths[OLE DB Source Output]"
           TopLeft="318,47.4999999999999">
@@ -57084,10 +57143,6 @@ FROM SALDOSTARJETAS</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Saldos\Carga SaldosPrestamos\SQL SaldosPrestamos"
-          TopLeft="328,205" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosPrestamos.Paths[Data Conversion Output]"
           TopLeft="318,149.5">
@@ -57147,51 +57202,17 @@ FROM SALDOSTARJETAS</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas"
-          TopLeft="365,296" />
+          Size="161,42"
+          Id="Package\Saldos\Carga SaldosTarjetas\Data Conversion"
+          TopLeft="187,196" />
         <NodeLayout
           Size="154,42"
           Id="Package\Saldos\Carga SaldosTarjetas\Source Staging"
           TopLeft="96,56" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Saldos\Carga SaldosTarjetas\Data Conversion"
-          TopLeft="187,196" />
-        <EdgeLayout
-          Id="Package\Saldos\Carga SaldosTarjetas.Paths[Data Conversion Output]"
-          TopLeft="267.5,238">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="186,58"
-              Start="0,0"
-              End="186,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="4,29" />
-                  <mssgle:LineSegment
-                    End="182,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="182,29"
-                    Point2="186,29"
-                    Point3="186,33" />
-                  <mssgle:LineSegment
-                    End="186,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="177,42"
+          Id="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas"
+          TopLeft="365,296" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldosTarjetas.Paths[OLE DB Source Output]"
           TopLeft="173,98">
@@ -57218,6 +57239,40 @@ FROM SALDOSTARJETAS</property>
                     Point3="94.5,53" />
                   <mssgle:LineSegment
                     End="94.5,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Saldos\Carga SaldosTarjetas.Paths[Data Conversion Output]"
+          TopLeft="267.5,238">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186,58"
+              Start="0,0"
+              End="186,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="182,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="182,29"
+                    Point2="186,29"
+                    Point3="186,33" />
+                  <mssgle:LineSegment
+                    End="186,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
