@@ -192,7 +192,12 @@ GO
 ALTER TABLE FactLiquidaciones ADD Cod_Cliente numeric(10,0)
 GO
 
-update FactLiquidaciones set Cod_Cliente = D.ID_CLIENTE
+UPDATE FactLiquidaciones set Cod_Cliente = D.ID_CLIENTE
 FROM AyJStaging.dbo.TARJETAS_LIQUIDA_CLI_DETA D
 WHERE FactLiquidaciones.Cod_Liquidacion = D.ID_LIQUIDACION_CLI
+GO
+
+TRUNCATE TABLE DimCliente
+GO
+ALTER TABLE DimCliente ADD Cod_Sucursal numeric(10,0)
 GO
