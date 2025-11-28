@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="308"
-  DTS:VersionGUID="{1A65FD2A-E442-4281-804A-70EB6051D87E}">
+  DTS:VersionBuild="309"
+  DTS:VersionGUID="{1E262356-C06A-4B53-B1BA-DBB73C8D8FAA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -44842,7 +44842,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="17">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44859,7 +44859,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="24">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44889,7 +44889,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44919,7 +44919,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobranzas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44949,7 +44949,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobros"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="15">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -44979,7 +44979,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobrosJudiciales"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="16">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45009,7 +45009,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCompras"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="17">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45039,7 +45039,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactConsumos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="18">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45069,7 +45069,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCuentasCorrientes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="19">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45099,7 +45099,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactDeadline"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="20">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45129,7 +45129,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactDevengamientoPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="23">
+          DTS:ThreadHint="18">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45159,7 +45159,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactGestiones"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="19">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45189,7 +45189,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="20">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45219,7 +45219,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactIngresosPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="21">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45249,7 +45249,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="22">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45309,7 +45309,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="22">
+          DTS:ThreadHint="23">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45429,7 +45429,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPromocionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="21">
+          DTS:ThreadHint="24">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45446,7 +45446,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSaldosMora"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45476,7 +45476,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSolicitudes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45506,7 +45506,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSolicitudesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -45536,7 +45536,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactSolicitudesRapidas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="16">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47110,7 +47110,7 @@ FROM COMPOCLI c
 LEFT JOIN (
 	SELECT ID_CLIENTE, SUM(DEBE - HABER) as AUTORIZACIONES_PREST 
 	FROM COMPOCLI 
-	WHERE DEVENGADA = 0 AND ((CODOP = 31 AND ID_SUBSISTEMA = 2) OR CODOP = 12)
+	WHERE ANULADA = 0 AND DEVENGADA = 0 AND ((CODOP = 31 AND ID_SUBSISTEMA = 2) OR CODOP = 12)
 	GROUP BY ID_CLIENTE
 ) as prest ON c.ID_CLIENTE = prest.ID_CLIENTE
 LEFT JOIN (
@@ -47120,28 +47120,29 @@ LEFT JOIN (
 			ELSE 0 END) as PUNITORIOS
 	FROM COMPOCLI c
 	INNER JOIN PRESTAMOS_AUTORIZACIONES_CLI pac ON c.NRO_CUOTA = pac.NRO_CUOTA AND c.FACTURA = pac.ID_AUTORIZACION
-	WHERE c.ID_SUBSISTEMA = 2 AND c.DEVENGADA = 1 AND c.CODOP = 31
+	WHERE c.ANULADA = 0 AND c.ID_SUBSISTEMA = 2 AND c.DEVENGADA = 1 AND c.CODOP = 31
 	GROUP BY c.ID_CLIENTE
 ) as aut ON c.ID_CLIENTE = aut.ID_CLIENTE
 LEFT JOIN (
 	SELECT ID_CLIENTE, SUM(DEBE - HABER) as CARGOS_EMISION_PREST 
 	FROM COMPOCLI 
-	WHERE (CODOP = 36 AND ID_SUBSISTEMA = 2)
+	WHERE ANULADA = 0 AND (CODOP = 36 AND ID_SUBSISTEMA = 2)
 	GROUP BY ID_CLIENTE
 ) as cargos ON c.ID_CLIENTE = cargos.ID_CLIENTE
 LEFT JOIN (
 	SELECT ID_CLIENTE, SUM(HABER) as CREDITOS_PREST, SUM(DEBE) as DEBITOS_PREST
 	FROM COMPOCLI 
-	WHERE (CODOP = 47) AND DEVENGADA = 0 AND DEBE &lt;&gt; HABER AND ID_SUBSISTEMA = 2
+	WHERE ANULADA = 0 AND (CODOP = 47) AND DEVENGADA = 0 AND DEBE &lt;&gt; HABER AND ID_SUBSISTEMA = 2
 	GROUP BY ID_CLIENTE
 ) as cred ON c.ID_CLIENTE = cred.ID_CLIENTE
 LEFT JOIN (
 	SELECT ID_CLIENTE, SUM(DEBE - INTERES_CUOTA) as CAPITAL
 	FROM COMPOCLI 
-	WHERE (CODOP = 31 OR CODOP = 12) AND (DEBE - HABER) &gt; 0
+	WHERE ANULADA = 0 AND (CODOP = 31 OR CODOP = 12) AND (DEBE - HABER) &gt; 0
 	GROUP BY ID_CLIENTE
 ) as capital ON c.ID_CLIENTE = capital.ID_CLIENTE
-LEFT JOIN CLIENTE cli ON c.ID_CLIENTE = cli.ID</property>
+LEFT JOIN CLIENTE cli ON c.ID_CLIENTE = cli.ID
+WHERE c.ANULADA = 0</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -49343,7 +49344,7 @@ FROM SALDOSTARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SaldosBase"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -49360,7 +49361,7 @@ FROM SALDOSTARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SaldosCapitalBase"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -57000,7 +57001,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\Saldos\Carga SaldosBase">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="161,42"
           Id="Package\Saldos\Carga SaldosBase\Data Conversion"
@@ -57044,9 +57045,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57080,9 +57079,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
