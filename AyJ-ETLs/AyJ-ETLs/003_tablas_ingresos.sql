@@ -259,3 +259,74 @@ CREATE TABLE [dbo].[CARGOS_REFINANCIACION2](
 	[NUMOP] [float] NULL
 ) ON [PRIMARY]
 GO
+
+ALTER TABLE FactAutorizacionesTarjetas ADD Cod_Autorizacion numeric(10,0)
+GO
+
+ALTER TABLE TARJETAS_AUTORIZACIONES_COM ADD ID_FORMA_PAGO numeric(10,0)
+GO
+
+ALTER TABLE FactAutorizacionesComercios ADD Cod_Autorizacion numeric(10,0), Cod_Forma_Pago numeric(10, 0)
+GO
+
+USE [AyJDW]
+GO
+
+/****** Object:  Table [dbo].[FactLiquidacionesComercios]    Script Date: 12/13/2025 2:34:19 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FactLiquidacionesComercios](
+	[Id] [numeric](10, 0) NULL,
+	[Fecha] [datetime2](7) NULL,
+	[Cod_Autorizacion] [numeric](10, 0) NULL,
+	[Cod_Cliente] [numeric](10, 0) NULL,
+	[Importe_Cuota] [numeric](14, 2) NULL,
+	[Cod_Comercio] [numeric](10, 0) NULL,
+	[Cod_Tarjeta] [numeric](10, 0) NULL,
+	[Codop] [numeric](10, 0) NULL,
+	[Numop] [numeric](10, 0) NULL,
+	[Cod_Liquidacion] [numeric](10, 0) NULL,
+	[Cod_Sucursal_Comercio] [numeric](10, 0) NULL,
+	[Cod_Autorizacion_Com] [numeric](10, 0) NULL,
+	[Cod_Empresa] [numeric](10, 0) NULL,
+	[Cod_Sucursal] [numeric](10, 0) NULL,
+	[Total] [numeric](12, 2) NULL,
+	[Cod_Tipo_Pago] [numeric](10, 0) NULL,
+	[Anulada] [numeric](10, 0) NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE FactIngresosComercios ADD Cod_Autorizacion numeric(10,0), Cod_Comercio numeric(10,0), Total_Ingreso_Comercio numeric(14,2)
+GO
+
+USE [AyJDW]
+GO
+
+/****** Object:  Table [dbo].[FactIngresosClientes]    Script Date: 12/13/2025 3:05:33 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FactIngresosClientes](
+	[Cod_Cliente] [float] NULL,
+	[Cod_Sucursal] [float] NULL,
+	[Cod_Empresa] [float] NULL,
+	[Fecha] [date] NULL,
+	[Total_Tarjetas_Ingresos] [float] NULL,
+	[Total_Prestamos_Intereses] [float] NULL,
+	[Total_Cargos_Prestamos_Punit] [float] NULL,
+	[Total_Cargos_Prestamos_Otorgamiento] [float] NULL,
+	[Total_Cargos_Prestamos_Dvto] [float] NULL,
+	[Total_Debcre_Prestamos] [float] NULL,
+	[Total_Cargos_Refinanciacion] [float] NULL,
+	[Total_Cargos_Refinanciacion2] [float] NULL,
+	[Total_Ajustes_Saldos] [numeric](11, 2) NULL,
+	[Tipo] [varchar](29) NULL
+) ON [PRIMARY]
+GO
