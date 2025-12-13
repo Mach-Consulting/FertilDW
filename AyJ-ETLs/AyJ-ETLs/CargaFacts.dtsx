@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="333"
-  DTS:VersionGUID="{D84AFA34-883A-4806-B208-08AC91D73F6C}">
+  DTS:VersionBuild="336"
+  DTS:VersionGUID="{57952B3A-AC93-4652-9402-EA5EE0FC85FD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -18051,6 +18051,739 @@ WHERE SOL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                   endId="Package\DW\DimClientesSolicitudRapida\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
                   name="OLE DB Source Output"
                   startId="Package\DW\DimClientesSolicitudRapida\Stagging.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DW\FactAjustesSaldos"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{894BEAD8-1A6B-459B-B737-B466ABE5E5D4}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FactAjustesSaldos"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DW\FactAjustesSaldos\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\DW\FactAjustesSaldos\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\DW\FactAjustesSaldos\Data Conversion.Inputs[Data Conversion Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\DW\FactAjustesSaldos\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos"
+                  componentClassID="Microsoft.SQLServerDestination"
+                  contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+                  description="SQL Server Destination"
+                  name="SQL FactAjustesSaldos"
+                  version="5">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.String"
+                      description="The name of the database object to copy data into."
+                      expressionType="Notify"
+                      name="BulkInsertTableName">[FactAjustesSaldos]</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                      name="BulkInsertCheckConstraints">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                      expressionType="Notify"
+                      name="BulkInsertFirstRow">-1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                      name="BulkInsertFireTriggers">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                      name="BulkInsertKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="BulkInsertKeepNulls">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                      expressionType="Notify"
+                      name="BulkInsertLastRow">-1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                      name="BulkInsertMaxErrors">-1</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                      expressionType="Notify"
+                      name="BulkInsertOrder"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                      name="BulkInsertTablock">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                      expressionType="Notify"
+                      name="Timeout">30</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                      name="MaxInsertCommitSize">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Connections[OleDbConnection]"
+                      connectionManagerID="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Destino DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input]"
+                      hasSideEffects="true"
+                      name="SQL Server Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[FECHA]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="FECHA"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Fecha]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[FECHA]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[NOMBRE_CLIENTE]"
+                          cachedDataType="wstr"
+                          cachedLength="80"
+                          cachedName="NOMBRE_CLIENTE"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Cliente]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[NOMBRE]"
+                          cachedDataType="wstr"
+                          cachedLength="80"
+                          cachedName="NOMBRE"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[ID_DEBITOS_CREDITOS]"
+                          cachedDataType="numeric"
+                          cachedName="ID_DEBITOS_CREDITOS"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Id_Debitos_Creditos]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_DEBITOS_CREDITOS]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[IMPORTE]"
+                          cachedDataType="numeric"
+                          cachedName="IMPORTE"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Importe]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[IMPORTE]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[IVA]"
+                          cachedDataType="numeric"
+                          cachedName="IVA"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Iva]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[IVA]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[TASA_IVA]"
+                          cachedDataType="numeric"
+                          cachedName="TASA_IVA"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Tasa_Iva]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[TASA_IVA]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[NOMBRE_SUCURSAL]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="NOMBRE_SUCURSAL"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Sucursal]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_SUCURSAL]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[CODOP]"
+                          cachedDataType="numeric"
+                          cachedName="CODOP"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Codop]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[CODOP]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[NUMOP]"
+                          cachedDataType="numeric"
+                          cachedName="NUMOP"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Numop]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NUMOP]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[ID_CLIENTE]"
+                          cachedDataType="numeric"
+                          cachedName="ID_CLIENTE"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Cliente]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[ID_LIQUIDACION]"
+                          cachedDataType="numeric"
+                          cachedName="ID_LIQUIDACION"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Liquidacion]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_LIQUIDACION]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[ID_EMPRESA]"
+                          cachedDataType="numeric"
+                          cachedName="ID_EMPRESA"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]" />
+                        <inputColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].Columns[ID_SUCURSAL]"
+                          cachedDataType="numeric"
+                          cachedName="ID_SUCURSAL"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Fecha]"
+                          dataType="dbTimeStamp2"
+                          name="Fecha"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Cliente]"
+                          dataType="numeric"
+                          name="Cod_Cliente"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Cliente]"
+                          dataType="wstr"
+                          length="80"
+                          name="Nombre_Cliente" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Liquidacion]"
+                          dataType="numeric"
+                          name="Cod_Liquidacion"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="80"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Id_Debitos_Creditos]"
+                          dataType="numeric"
+                          name="Id_Debitos_Creditos"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Importe]"
+                          dataType="numeric"
+                          name="Importe"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Iva]"
+                          dataType="numeric"
+                          name="Iva"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Tasa_Iva]"
+                          dataType="numeric"
+                          name="Tasa_Iva"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
+                          dataType="numeric"
+                          name="Cod_Empresa"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal]"
+                          dataType="numeric"
+                          name="Cod_Sucursal"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Sucursal]"
+                          dataType="wstr"
+                          length="60"
+                          name="Nombre_Sucursal" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Codop]"
+                          dataType="numeric"
+                          name="Codop"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input].ExternalColumns[Numop]"
+                          dataType="numeric"
+                          name="Numop"
+                          precision="10" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\DW\FactAjustesSaldos\Staging"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Staging"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[AJUSTES_SALDOS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM AJUSTES_SALDOS
+WHERE ID_DEBITOS_CREDITOS NOT IN(150, 302, 361, 382)</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\FactAjustesSaldos\Staging.Connections[OleDbConnection]"
+                      connectionManagerID="{AE7F97C1-A8A6-4F54-8FE0-F2CFF772EBE8}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Origen Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[FECHA]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[FECHA]"
+                          name="FECHA"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CLIENTE]"
+                          length="80"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_CLIENTE]"
+                          name="NOMBRE_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_LIQUIDACION]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_LIQUIDACION]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_LIQUIDACION]"
+                          name="ID_LIQUIDACION"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                          length="80"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                          name="NOMBRE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_DEBITOS_CREDITOS]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_DEBITOS_CREDITOS]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_DEBITOS_CREDITOS]"
+                          name="ID_DEBITOS_CREDITOS"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[IMPORTE]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[IMPORTE]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[IMPORTE]"
+                          name="IMPORTE"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[IVA]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[IVA]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[IVA]"
+                          name="IVA"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[TASA_IVA]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[TASA_IVA]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[TASA_IVA]"
+                          name="TASA_IVA"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
+                          name="ID_EMPRESA"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_SUCURSAL]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]"
+                          name="ID_SUCURSAL"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_SUCURSAL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_SUCURSAL]"
+                          length="60"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_SUCURSAL]"
+                          name="NOMBRE_SUCURSAL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[CODOP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[CODOP]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[CODOP]"
+                          name="CODOP"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NUMOP]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NUMOP]"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].Columns[NUMOP]"
+                          name="NUMOP"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                          dataType="dbTimeStamp2"
+                          name="FECHA"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          dataType="numeric"
+                          name="ID_CLIENTE"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CLIENTE]"
+                          dataType="wstr"
+                          length="80"
+                          name="NOMBRE_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_LIQUIDACION]"
+                          dataType="numeric"
+                          name="ID_LIQUIDACION"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                          dataType="wstr"
+                          length="80"
+                          name="NOMBRE" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_DEBITOS_CREDITOS]"
+                          dataType="numeric"
+                          name="ID_DEBITOS_CREDITOS"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[IMPORTE]"
+                          dataType="numeric"
+                          name="IMPORTE"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[IVA]"
+                          dataType="numeric"
+                          name="IVA"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[TASA_IVA]"
+                          dataType="numeric"
+                          name="TASA_IVA"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
+                          dataType="numeric"
+                          name="ID_EMPRESA"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_SUCURSAL]"
+                          dataType="numeric"
+                          name="ID_SUCURSAL"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_SUCURSAL]"
+                          dataType="wstr"
+                          length="60"
+                          name="NOMBRE_SUCURSAL" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[CODOP]"
+                          dataType="numeric"
+                          name="CODOP"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output].ExternalColumns[NUMOP]"
+                          dataType="numeric"
+                          name="NUMOP"
+                          precision="10" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                          name="FECHA"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CLIENTE]"
+                          dataType="wstr"
+                          length="80"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CLIENTE]"
+                          name="NOMBRE_CLIENTE" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_LIQUIDACION]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_LIQUIDACION]"
+                          name="ID_LIQUIDACION"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                          dataType="wstr"
+                          length="80"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                          name="NOMBRE" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_DEBITOS_CREDITOS]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_DEBITOS_CREDITOS]"
+                          name="ID_DEBITOS_CREDITOS"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[IMPORTE]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[IMPORTE]"
+                          name="IMPORTE"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[IVA]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[IVA]"
+                          name="IVA"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[TASA_IVA]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[TASA_IVA]"
+                          name="TASA_IVA"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
+                          name="ID_EMPRESA"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_SUCURSAL]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ID_SUCURSAL]"
+                          name="ID_SUCURSAL"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_SUCURSAL]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_SUCURSAL]"
+                          name="NOMBRE_SUCURSAL" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[CODOP]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[CODOP]"
+                          name="CODOP"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NUMOP]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[NUMOP]"
+                          name="NUMOP"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DW\FactAjustesSaldos.Paths[Data Conversion Output]"
+                  endId="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos.Inputs[SQL Server Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\DW\FactAjustesSaldos\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\DW\FactAjustesSaldos.Paths[OLE DB Source Output]"
+                  endId="Package\DW\FactAjustesSaldos\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DW\FactAjustesSaldos\Staging.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -46791,6 +47524,23 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           </DTS:Executables>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\DW\TRUNCATE FactAjustesSaldos"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Truncate FactAjustesSaldos table"
+          DTS:DTSID="{43B2FE92-F7B6-44E5-928B-E43CB70B8902}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE FactAjustesSaldos"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="27">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[FactAjustesSaldos]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\DW\TRUNCATE FactAutorizacionesComercios"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
@@ -48947,6 +49697,14 @@ WHERE FS02.Fecha IS NULL</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 34"
           DTS:To="Package\DW\FactIngresosClientes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DW.PrecedenceConstraints[Constraint 35]"
+          DTS:CreationName=""
+          DTS:DTSID="{86F8C5A9-2F43-4A4E-8884-C83ED34A8D37}"
+          DTS:From="Package\DW\TRUNCATE FactAjustesSaldos"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 35"
+          DTS:To="Package\DW\FactAjustesSaldos" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DW.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
@@ -52802,25 +53560,55 @@ FROM SALDOSTARJETAS</property>
         <NodeLayout
           Size="182,42"
           Id="Package\DW\FactIngresosClientes"
-          TopLeft="409,3712" />
+          TopLeft="407,3697" />
         <NodeLayout
           Size="228,42"
           Id="Package\DW\DELETE FactIngresosClientes"
-          TopLeft="117,3712" />
+          TopLeft="113,3693" />
         <EdgeLayout
           Id="Package\DW.PrecedenceConstraints[Constraint 34]"
-          TopLeft="345,3733">
+          TopLeft="341,3716">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64,0"
+              EndConnector="66,0"
               Start="0,0"
-              End="56.5,0">
+              End="58.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="56.5,0" />
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DW\TRUNCATE FactAjustesSaldos"
+          TopLeft="121,3758.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DW\FactAjustesSaldos"
+          TopLeft="418,3765" />
+        <EdgeLayout
+          Id="Package\DW.PrecedenceConstraints[Constraint 35]"
+          TopLeft="291,3782.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127,0"
+              Start="0,0"
+              End="119.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="119.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -52832,8 +53620,8 @@ FROM SALDOSTARJETAS</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1600,3827"
-          Size="1600,3870"
+          PanelSize="1600,3862"
+          Size="1600,3905"
           Id="Package\DW"
           TopLeft="475,120" />
         <NodeLayout
@@ -53040,7 +53828,7 @@ FROM SALDOSTARJETAS</property>
           PanelSize="1347,265"
           Size="1347,308"
           Id="Package\Saldos"
-          TopLeft="481,3935" />
+          TopLeft="475,4075" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="854.333333333333,120">
@@ -53111,24 +53899,30 @@ FROM SALDOSTARJETAS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="1275,3990">
+          TopLeft="1275,4025">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="553,99"
+              EndConnector="-126.5,50"
               Start="0,0"
-              End="545.5,99">
+              End="-126.5,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,95" />
+                    End="0,21" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,95"
-                    Point2="0,99"
-                    Point3="4,99" />
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="-4,25" />
                   <mssgle:LineSegment
-                    End="545.5,99" />
+                    End="-122.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-122.5,25"
+                    Point2="-126.5,25"
+                    Point3="-126.5,29" />
+                  <mssgle:LineSegment
+                    End="-126.5,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -59796,6 +60590,115 @@ FROM SALDOSTARJETAS</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DW\FactIngresosClientes\SQL FactIngresosClientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DW\FactAjustesSaldos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\DW\FactAjustesSaldos\Staging"
+          TopLeft="87,44" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\FactAjustesSaldos\Data Conversion"
+          TopLeft="234,147" />
+        <EdgeLayout
+          Id="Package\DW\FactAjustesSaldos.Paths[OLE DB Source Output]"
+          TopLeft="145,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="169.5,61"
+              Start="0,0"
+              End="169.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="165.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="165.5,30.5"
+                    Point2="169.5,30.5"
+                    Point3="169.5,34.5" />
+                  <mssgle:LineSegment
+                    End="169.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="195,42"
+          Id="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos"
+          TopLeft="444,227" />
+        <EdgeLayout
+          Id="Package\DW\FactAjustesSaldos.Paths[Data Conversion Output]"
+          TopLeft="314.5,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="227,38"
+              Start="0,0"
+              End="227,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="223,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="223,19"
+                    Point2="227,19"
+                    Point3="227,23" />
+                  <mssgle:LineSegment
+                    End="227,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactAjustesSaldos\Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

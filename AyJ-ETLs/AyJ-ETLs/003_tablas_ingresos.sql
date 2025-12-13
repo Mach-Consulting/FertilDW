@@ -330,3 +330,31 @@ CREATE TABLE [dbo].[FactIngresosClientes](
 	[Tipo] [varchar](29) NULL
 ) ON [PRIMARY]
 GO
+
+USE [AyJDW]
+GO
+
+/****** Object:  Table [dbo].[FactAjustesSaldos]    Script Date: 12/13/2025 5:55:06 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FactAjustesSaldos](
+	[Fecha] [datetime2](7) NULL,
+	[Cod_Cliente] [numeric](10, 0) NULL,
+	[Nombre_Cliente] [nvarchar](80) NULL,
+	[Cod_Liquidacion] [numeric](10, 0) NULL,
+	[Nombre] [nvarchar](80) NULL,
+	[Id_Debitos_Creditos] [numeric](10, 0) NULL,
+	[Importe] [numeric](10, 2) NULL,
+	[Iva] [numeric](10, 2) NULL,
+	[Tasa_Iva] [numeric](10, 2) NULL,
+	[Cod_Empresa] [numeric](10, 0) NULL,
+	[Cod_Sucursal] [numeric](10, 0) NULL,
+	[Nombre_Sucursal] [nvarchar](60) NULL,
+	[Codop] [numeric](10, 0) NULL,
+	[Numop] [numeric](10, 0) NULL
+) ON [PRIMARY]
+GO
