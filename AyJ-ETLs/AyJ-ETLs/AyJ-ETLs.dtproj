@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SRVDESABI01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="fqTTACVkofo=" SSIS:IV="WApE0dUKIB34sCbw/X1GGw==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">oa9lWUHp2HFwCMA8ExEgkMmmsdNhLr8RS4r5sVVzpDCrtAoWRW+8vYHO5NW6Obm5umvzBIxIltTveDF2Oy/CreDoOX47TybVE3UT0ZYGisgbMWZc9nOopMo3u6sr/chHpWHwL+mDGVoNxXY6bR/c1QkmGXRg0xlYVXTx2gGQqZ/Baw+LOgmfIJUPs7RJsaRY</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="bXCEsvTJ5wY=" SSIS:IV="5UDj7aaeYDq9XXb+X5a2uQ==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">jPAaN9UUtLzU5Bw25y99liuDO4NQfkvOqT6j25+yW2RTVDjM0SOvLQRVJYzI0RQqv0tdhHCTr1EalkzhApptVDlVXCDD6K5hgyGWVOGh4SSo8fWaTJBf6CnQCli02dBDfJ5kCaIZ+Ny0UvL7bPodkdyZ5u9grPcpsNCOwKn9HRqOb1h9Mywdf79PwIASrP+Q</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -1170,8 +1170,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1367,8 +1365,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1564,8 +1560,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1607,10 +1601,10 @@
                 <SSIS:Property SSIS:Name="Name">CargaFacts Stagging</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">334</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">393</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B6124A87-B327-4378-BB72-FDAD195FA349}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FAA39E22-7133-4F3E-AC66-3D63D31765E9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1641,10 +1635,10 @@
                 <SSIS:Property SSIS:Name="Name">CargaFacts</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">304</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">314</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{127B15D3-BE09-4B0A-A26D-99785FF26FEB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7D16A987-C31F-4390-98B5-3E1BFAA05158}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1830,8 +1824,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -2062,8 +2054,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -2130,6 +2120,10 @@
     <ProjectItem>
       <Name>002_nuevas_tablas_banka.sql</Name>
       <FullPath>002_nuevas_tablas_banka.sql</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>003_tablas_ingresos.sql</Name>
+      <FullPath>003_tablas_ingresos.sql</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>EntidadesFertilSuma.xls</Name>
