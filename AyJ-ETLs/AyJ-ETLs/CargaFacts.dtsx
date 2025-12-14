@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="336"
-  DTS:VersionGUID="{57952B3A-AC93-4652-9402-EA5EE0FC85FD}">
+  DTS:VersionBuild="344"
+  DTS:VersionGUID="{1421F4F3-C2C4-4BCC-8C29-D3FBF230EE82}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -16232,7 +16232,7 @@ WHERE SOL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="DELETE FactIngresosClientes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -26578,6 +26578,13 @@ AND FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           cachedScale="2"
                           externalMetadataColumnId="Package\DW\FactIngresosComercios\FactIngresosComercios.Inputs[OLE DB Destination Input].ExternalColumns[Total_Ingreso_Comercio]"
                           lineageId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Output].Columns[Total_Ingreso_Comercio]" />
+                        <inputColumn
+                          refId="Package\DW\FactIngresosComercios\FactIngresosComercios.Inputs[OLE DB Destination Input].Columns[Cod_Cliente]"
+                          cachedDataType="numeric"
+                          cachedName="Cod_Cliente"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactIngresosComercios\FactIngresosComercios.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Cliente]"
+                          lineageId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Output].Columns[Cod_Cliente]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -26627,8 +26634,13 @@ AND FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           refId="Package\DW\FactIngresosComercios\FactIngresosComercios.Inputs[OLE DB Destination Input].ExternalColumns[Total_Ingreso_Comercio]"
                           dataType="numeric"
                           name="Total_Ingreso_Comercio"
-                          precision="14"
+                          precision="17"
                           scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactIngresosComercios\FactIngresosComercios.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Cliente]"
+                          dataType="numeric"
+                          name="Cod_Cliente"
+                          precision="10" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -26692,10 +26704,12 @@ AND FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
 	TAC.ARANCEL AS Arancel,
 	TAC.PAGO_ANTICIPADO AS Pago_Anticipado,
 	TAC.ACUERDO AS Acuerdo,
-                   TAC.ACUERDO + TAC.PAGO_ANTICIPADO + TAC.CARGO + TAC.ARANCEL as Total_Ingreso_Comercio
+                   TAC.ACUERDO + TAC.PAGO_ANTICIPADO + TAC.CARGO + TAC.ARANCEL as Total_Ingreso_Comercio,
+                   TAD.ID_CLIENTE as Cod_Cliente
 FROM TARJETAS_LIQUIDA_COM tlc
 INNER JOIN TARJETAS_AUTORIZACIONES_COM TAC 
 	ON TLC.ID_AUTORIZACION = TAC.ID_AUTORIZACION
+INNER JOIN TARJETAS_AUTORIZACIONES_DETA TAD ON TAC.ID_AUTORIZACION = TAD.ID_AUTORIZACION
 WHERE TLC.ANULADA != 1
 AND TLC.fecha BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                     <property
@@ -26828,6 +26842,16 @@ AND TLC.fecha BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           precision="17"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Output].Columns[Cod_Cliente]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Output].ExternalColumns[Cod_Cliente]"
+                          lineageId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Output].Columns[Cod_Cliente]"
+                          name="Cod_Cliente"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -26881,6 +26905,11 @@ AND TLC.fecha BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           name="Total_Ingreso_Comercio"
                           precision="17"
                           scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Output].ExternalColumns[Cod_Cliente]"
+                          dataType="numeric"
+                          name="Cod_Cliente"
+                          precision="10" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -26947,6 +26976,12 @@ AND TLC.fecha BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           name="Total_Ingreso_Comercio"
                           precision="17"
                           scale="2" />
+                        <outputColumn
+                          refId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Error Output].Columns[Cod_Cliente]"
+                          dataType="numeric"
+                          lineageId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Error Output].Columns[Cod_Cliente]"
+                          name="Cod_Cliente"
+                          precision="10" />
                         <outputColumn
                           refId="Package\DW\FactIngresosComercios\Stagging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -29577,6 +29612,11 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           refId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].ExternalColumns[Anulada]"
                           dataType="numeric"
                           name="Anulada"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].ExternalColumns[Id]"
+                          dataType="numeric"
+                          name="Id"
                           precision="10" />
                       </externalMetadataColumns>
                     </input>
@@ -47532,7 +47572,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAjustesSaldos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="27">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47549,7 +47589,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47566,7 +47606,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47596,7 +47636,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47626,7 +47666,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobranzas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47656,7 +47696,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobros"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47686,7 +47726,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobrosJudiciales"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="15">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47716,7 +47756,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCompras"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="16">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47746,7 +47786,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactConsumos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="17">
+          DTS:ThreadHint="27">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47836,7 +47876,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactDevengamientoPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47866,7 +47906,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactGestiones"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47896,7 +47936,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47926,7 +47966,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactIngresosPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47956,7 +47996,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48016,7 +48056,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidacionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48033,7 +48073,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="16">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48153,7 +48193,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPromocionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="17">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48260,7 +48300,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactSolicitudesRapidas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -52092,7 +52132,7 @@ FROM SALDOSTARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SaldosBase"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -52143,7 +52183,7 @@ FROM SALDOSTARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SaldosTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -52384,9 +52424,17 @@ FROM SALDOSTARJETAS</property>
           Id="Package\DW\Carga FactSolicitudesPrestamos"
           TopLeft="448,1449" />
         <NodeLayout
+          Size="228,42"
+          Id="Package\DW\DELETE FactIngresosClientes"
+          TopLeft="113,3693" />
+        <NodeLayout
           Size="206,42"
           Id="Package\DW\DimClientesSolicitudRapida"
           TopLeft="840,3621" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DW\FactAjustesSaldos"
+          TopLeft="418,3765" />
         <NodeLayout
           Size="215,42"
           Id="Package\DW\FactAutorizacionesComercios"
@@ -52440,6 +52488,10 @@ FROM SALDOSTARJETAS</property>
           Id="Package\DW\FactHistoriaMoraTarjeta"
           TopLeft="101,2922" />
         <NodeLayout
+          Size="182,42"
+          Id="Package\DW\FactIngresosClientes"
+          TopLeft="407,3697" />
+        <NodeLayout
           Size="188,42"
           Id="Package\DW\FactIngresosComercios"
           TopLeft="506,3060" />
@@ -52451,6 +52503,10 @@ FROM SALDOSTARJETAS</property>
           Size="177,42"
           Id="Package\DW\FactIngresosTarjetas"
           TopLeft="508,3135" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\DW\FactLiquidacionesComercios"
+          TopLeft="533,3353" />
         <NodeLayout
           Size="200,42"
           Id="Package\DW\FactLiquidacionesTarjetas"
@@ -52550,6 +52606,10 @@ FROM SALDOSTARJETAS</property>
           Id="Package\DW\Faltantes FactSolicitudesPrestamos"
           TopLeft="811,1358" />
         <NodeLayout
+          Size="170,42"
+          Id="Package\DW\TRUNCATE FactAjustesSaldos"
+          TopLeft="121,3758.5" />
+        <NodeLayout
           Size="270,42"
           Id="Package\DW\TRUNCATE FactAutorizacionesComercios"
           TopLeft="106,3290" />
@@ -52613,6 +52673,10 @@ FROM SALDOSTARJETAS</property>
           Size="217,42"
           Id="Package\DW\TRUNCATE FactLiquidaciones"
           TopLeft="80.9999999999999,1948" />
+        <NodeLayout
+          Size="257,42"
+          Id="Package\DW\TRUNCATE FactLiquidacionesComercios"
+          TopLeft="114,3348" />
         <NodeLayout
           Size="255,42"
           Id="Package\DW\TRUNCATE FactLiquidacionesTarjetas"
@@ -53384,6 +53448,72 @@ FROM SALDOSTARJETAS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DW.PrecedenceConstraints[Constraint 33]"
+          TopLeft="371,3371.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="162,0"
+              Start="0,0"
+              End="154.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="154.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW.PrecedenceConstraints[Constraint 34]"
+          TopLeft="341,3716">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW.PrecedenceConstraints[Constraint 35]"
+          TopLeft="291,3782.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127,0"
+              Start="0,0"
+              End="119.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="119.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DW.PrecedenceConstraints[Constraint 4]"
           TopLeft="317.5,1469.75">
           <EdgeLayout.Curve>
@@ -53519,96 +53649,6 @@ FROM SALDOSTARJETAS</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="177.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="257,42"
-          Id="Package\DW\TRUNCATE FactLiquidacionesComercios"
-          TopLeft="114,3348" />
-        <NodeLayout
-          Size="220,42"
-          Id="Package\DW\FactLiquidacionesComercios"
-          TopLeft="533,3353" />
-        <EdgeLayout
-          Id="Package\DW.PrecedenceConstraints[Constraint 33]"
-          TopLeft="371,3371.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="162,0"
-              Start="0,0"
-              End="154.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="154.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="182,42"
-          Id="Package\DW\FactIngresosClientes"
-          TopLeft="407,3697" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\DW\DELETE FactIngresosClientes"
-          TopLeft="113,3693" />
-        <EdgeLayout
-          Id="Package\DW.PrecedenceConstraints[Constraint 34]"
-          TopLeft="341,3716">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="66,0"
-              Start="0,0"
-              End="58.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="58.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\DW\TRUNCATE FactAjustesSaldos"
-          TopLeft="121,3758.5" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\DW\FactAjustesSaldos"
-          TopLeft="418,3765" />
-        <EdgeLayout
-          Id="Package\DW.PrecedenceConstraints[Constraint 35]"
-          TopLeft="291,3782.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127,0"
-              Start="0,0"
-              End="119.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="119.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54596,10 +54636,6 @@ FROM SALDOSTARJETAS</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="161,42"
-          Id="Package\DW\Carga FactAutorizacionesTarjetas\Data Conversion"
-          TopLeft="296,136" />
-        <NodeLayout
           Size="212,42"
           Id="Package\DW\Carga FactAutorizacionesTarjetas\FactAutorizacionesTarjetas"
           TopLeft="534,221" />
@@ -54607,6 +54643,10 @@ FROM SALDOSTARJETAS</property>
           Size="138,42"
           Id="Package\DW\Carga FactAutorizacionesTarjetas\AyJ Staging"
           TopLeft="105,57" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\Carga FactAutorizacionesTarjetas\Data Conversion"
+          TopLeft="296,136" />
         <EdgeLayout
           Id="Package\DW\Carga FactAutorizacionesTarjetas.Paths[OLE DB Source Output]"
           TopLeft="174,99">
@@ -55335,7 +55375,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\Carga FactLiquidaciones">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\DW\Carga FactLiquidaciones\Data Conversion"
@@ -55367,7 +55407,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -55389,7 +55431,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -56294,10 +56338,123 @@ FROM SALDOSTARJETAS</property>
     </LayoutInfo>
   </TaskHost>
   <TaskHost
+    design-time-name="Package\DW\FactAjustesSaldos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\DW\FactAjustesSaldos\Staging"
+          TopLeft="87,44" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\FactAjustesSaldos\Data Conversion"
+          TopLeft="234,147" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos"
+          TopLeft="444,227" />
+        <EdgeLayout
+          Id="Package\DW\FactAjustesSaldos.Paths[OLE DB Source Output]"
+          TopLeft="145,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="169.5,61"
+              Start="0,0"
+              End="169.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="165.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="165.5,30.5"
+                    Point2="169.5,30.5"
+                    Point3="169.5,34.5" />
+                  <mssgle:LineSegment
+                    End="169.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\FactAjustesSaldos.Paths[Data Conversion Output]"
+          TopLeft="314.5,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="227,38"
+              Start="0,0"
+              End="227,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="223,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="223,19"
+                    Point2="227,19"
+                    Point3="227,23" />
+                  <mssgle:LineSegment
+                    End="227,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactAjustesSaldos\Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\DW\FactAutorizacionesComercios">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="122,42"
           Id="Package\DW\FactAutorizacionesComercios\Stagging"
@@ -56310,40 +56467,6 @@ FROM SALDOSTARJETAS</property>
           Size="225,42"
           Id="Package\DW\FactAutorizacionesComercios\FactAutorizacionesComercios"
           TopLeft="255,175" />
-        <EdgeLayout
-          Id="Package\DW\FactAutorizacionesComercios.Paths[OLE DB Source Output]"
-          TopLeft="137,69">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="157.5,33"
-              Start="0,0"
-              End="157.5,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="4,16.5" />
-                  <mssgle:LineSegment
-                    End="153.5,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="153.5,16.5"
-                    Point2="157.5,16.5"
-                    Point3="157.5,20.5" />
-                  <mssgle:LineSegment
-                    End="157.5,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DW\FactAutorizacionesComercios.Paths[Data Conversion Output]"
           TopLeft="294.5,144">
@@ -56375,7 +56498,45 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\FactAutorizacionesComercios.Paths[OLE DB Source Output]"
+          TopLeft="137,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="157.5,33"
+              Start="0,0"
+              End="157.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="153.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="153.5,16.5"
+                    Point2="157.5,16.5"
+                    Point3="157.5,20.5" />
+                  <mssgle:LineSegment
+                    End="157.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -57123,6 +57284,114 @@ FROM SALDOSTARJETAS</property>
     </LayoutInfo>
   </TaskHost>
   <TaskHost
+    design-time-name="Package\DW\FactIngresosClientes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\DW\FactIngresosClientes\Staging"
+          TopLeft="81,55" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\FactIngresosClientes\Data Conversion"
+          TopLeft="231,120" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\DW\FactIngresosClientes\SQL FactIngresosClientes"
+          TopLeft="450,207" />
+        <EdgeLayout
+          Id="Package\DW\FactIngresosClientes.Paths[OLE DB Source Output]"
+          TopLeft="139,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172.5,23"
+              Start="0,0"
+              End="172.5,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.5"
+                    Point2="0,11.5"
+                    Point3="4,11.5" />
+                  <mssgle:LineSegment
+                    End="168.5,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168.5,11.5"
+                    Point2="172.5,11.5"
+                    Point3="172.5,15.5" />
+                  <mssgle:LineSegment
+                    End="172.5,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\FactIngresosClientes.Paths[Data Conversion Output]"
+          TopLeft="311.5,162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="242,45"
+              Start="0,0"
+              End="242,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="238,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="238,22.5"
+                    Point2="242,22.5"
+                    Point3="242,26.5" />
+                  <mssgle:LineSegment
+                    End="242,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactIngresosClientes\Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactIngresosClientes\SQL FactIngresosClientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\DW\FactIngresosComercios">
     <LayoutInfo>
       <GraphLayout
@@ -57229,7 +57498,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactIngresosPrestamos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="122,42"
           Id="Package\DW\FactIngresosPrestamos\Stagging"
@@ -57257,7 +57526,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57275,7 +57546,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -57285,7 +57558,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactIngresosTarjetas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="122,42"
           Id="Package\DW\FactIngresosTarjetas\Stagging"
@@ -57313,7 +57586,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57331,17 +57606,128 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <TaskHost
-    design-time-name="Package\DW\FactLiquidacionesTarjetas">
+    design-time-name="Package\DW\FactLiquidacionesComercios">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\DW\FactLiquidacionesComercios\Staging"
+          TopLeft="40,25" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\FactLiquidacionesComercios\Data Conversion"
+          TopLeft="218,114" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios"
+          TopLeft="445,189" />
+        <EdgeLayout
+          Id="Package\DW\FactLiquidacionesComercios.Paths[OLE DB Source Output]"
+          TopLeft="98,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="200.5,47"
+              Start="0,0"
+              End="200.5,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="196.5,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="196.5,23.5"
+                    Point2="200.5,23.5"
+                    Point3="200.5,27.5" />
+                  <mssgle:LineSegment
+                    End="200.5,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\FactLiquidacionesComercios.Paths[Data Conversion Output]"
+          TopLeft="298.5,156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="269,33"
+              Start="0,0"
+              End="269,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="265,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="265,16.5"
+                    Point2="269,16.5"
+                    Point3="269,20.5" />
+                  <mssgle:LineSegment
+                    End="269,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactLiquidacionesComercios\Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DW\FactLiquidacionesTarjetas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\DW\FactLiquidacionesTarjetas\Data Conversion"
@@ -57373,7 +57759,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57395,7 +57783,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -57405,7 +57795,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactPromocionesComercios">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\DW\FactPromocionesComercios\Data Conversion"
@@ -57449,7 +57839,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57477,7 +57869,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -57547,7 +57941,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactSolicitudesRapidas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\DW\FactSolicitudesRapidas\Data Conversion"
@@ -57591,7 +57985,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57625,7 +58021,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -60377,328 +60775,6 @@ FROM SALDOSTARJETAS</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DW\FactLiquidacionesComercios">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="116,42"
-          Id="Package\DW\FactLiquidacionesComercios\Staging"
-          TopLeft="40,25" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DW\FactLiquidacionesComercios\Data Conversion"
-          TopLeft="218,114" />
-        <EdgeLayout
-          Id="Package\DW\FactLiquidacionesComercios.Paths[OLE DB Source Output]"
-          TopLeft="98,67">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="200.5,47"
-              Start="0,0"
-              End="200.5,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.5"
-                    Point2="0,23.5"
-                    Point3="4,23.5" />
-                  <mssgle:LineSegment
-                    End="196.5,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="196.5,23.5"
-                    Point2="200.5,23.5"
-                    Point3="200.5,27.5" />
-                  <mssgle:LineSegment
-                    End="200.5,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="245,42"
-          Id="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios"
-          TopLeft="445,189" />
-        <EdgeLayout
-          Id="Package\DW\FactLiquidacionesComercios.Paths[Data Conversion Output]"
-          TopLeft="298.5,156">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="269,33"
-              Start="0,0"
-              End="269,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="4,16.5" />
-                  <mssgle:LineSegment
-                    End="265,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="265,16.5"
-                    Point2="269,16.5"
-                    Point3="269,20.5" />
-                  <mssgle:LineSegment
-                    End="269,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\FactLiquidacionesComercios\Staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DW\FactIngresosClientes">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="116,42"
-          Id="Package\DW\FactIngresosClientes\Staging"
-          TopLeft="81,55" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DW\FactIngresosClientes\Data Conversion"
-          TopLeft="231,120" />
-        <EdgeLayout
-          Id="Package\DW\FactIngresosClientes.Paths[OLE DB Source Output]"
-          TopLeft="139,97">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="172.5,23"
-              Start="0,0"
-              End="172.5,15.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,7.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,7.5"
-                    Point2="0,11.5"
-                    Point3="4,11.5" />
-                  <mssgle:LineSegment
-                    End="168.5,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="168.5,11.5"
-                    Point2="172.5,11.5"
-                    Point3="172.5,15.5" />
-                  <mssgle:LineSegment
-                    End="172.5,15.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="207,42"
-          Id="Package\DW\FactIngresosClientes\SQL FactIngresosClientes"
-          TopLeft="450,207" />
-        <EdgeLayout
-          Id="Package\DW\FactIngresosClientes.Paths[Data Conversion Output]"
-          TopLeft="311.5,162">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="242,45"
-              Start="0,0"
-              End="242,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.5"
-                    Point2="0,22.5"
-                    Point3="4,22.5" />
-                  <mssgle:LineSegment
-                    End="238,22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="238,22.5"
-                    Point2="242,22.5"
-                    Point3="242,26.5" />
-                  <mssgle:LineSegment
-                    End="242,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\FactIngresosClientes\Staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\FactIngresosClientes\SQL FactIngresosClientes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DW\FactAjustesSaldos">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="116,42"
-          Id="Package\DW\FactAjustesSaldos\Staging"
-          TopLeft="87,44" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DW\FactAjustesSaldos\Data Conversion"
-          TopLeft="234,147" />
-        <EdgeLayout
-          Id="Package\DW\FactAjustesSaldos.Paths[OLE DB Source Output]"
-          TopLeft="145,86">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="169.5,61"
-              Start="0,0"
-              End="169.5,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
-                  <mssgle:LineSegment
-                    End="165.5,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="165.5,30.5"
-                    Point2="169.5,30.5"
-                    Point3="169.5,34.5" />
-                  <mssgle:LineSegment
-                    End="169.5,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="195,42"
-          Id="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos"
-          TopLeft="444,227" />
-        <EdgeLayout
-          Id="Package\DW\FactAjustesSaldos.Paths[Data Conversion Output]"
-          TopLeft="314.5,189">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="227,38"
-              Start="0,0"
-              End="227,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15"
-                    Point2="0,19"
-                    Point3="4,19" />
-                  <mssgle:LineSegment
-                    End="223,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="223,19"
-                    Point2="227,19"
-                    Point3="227,23" />
-                  <mssgle:LineSegment
-                    End="227,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\FactAjustesSaldos\Staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\FactAjustesSaldos\SQL FactAjustesSaldos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

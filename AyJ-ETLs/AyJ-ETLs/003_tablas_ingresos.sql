@@ -358,3 +358,6 @@ CREATE TABLE [dbo].[FactAjustesSaldos](
 	[Numop] [numeric](10, 0) NULL
 ) ON [PRIMARY]
 GO
+
+ALTER TABLE FactIngresosComercios ADD Cod_Cliente numeric(10,0)
+GO
