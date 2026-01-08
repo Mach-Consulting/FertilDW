@@ -36,4 +36,42 @@ CREATE TABLE [dbo].[SaldoLiquidacionPrestamo](
 ) ON [PRIMARY]
 GO
 
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[SALDO_TARJETA_CIERRE]    Script Date: 1/6/2026 8:47:53 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SALDO_TARJETA_CIERRE](
+	[ID_TABLA] [float] NULL,
+	[FECHA] [datetime] NULL,
+	[APELLIDO] [varchar](50) NULL,
+	[NOMBRE] [varchar](50) NULL,
+	[ID] [float] NULL,
+	[ID_EMPRESA] [float] NULL,
+	[ID_SUCURSAL] [float] NULL,
+	[ID_AUTORIZACIONES] [float] NULL,
+	[DEBITOS] [float] NULL,
+	[CREDITOS] [float] NULL,
+	[COMPENSATORIOS] [float] NULL,
+	[PUNITORIOS] [float] NULL,
+	[CARGOS_EMISION] [float] NULL,
+	[CARGOS_RENOVACION] [float] NULL,
+	[ULT_LIQ] [float] NULL,
+	[FUTURA] [float] NULL,
+	[COMPRAS] [float] NULL,
+	[NOMBRE_SUCURSAL] [varchar](40) NULL,
+	[SALDO] [float] NULL,
+	[PRESTAMOS] [float] NULL,
+	[NOTA] [varchar](200) NULL,
+	[NOMBRE_CANAL_COBRO] [varchar](40) NULL,
+	[TARJETA] [float] NULL
+) ON [PRIMARY]
+GO
+
+
 
