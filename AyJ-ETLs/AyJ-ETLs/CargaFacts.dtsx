@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="360"
-  DTS:VersionGUID="{E4148D3A-551F-4579-8E79-4F2D3A0055F4}">
+  DTS:VersionBuild="364"
+  DTS:VersionGUID="{9FC637EA-B2AA-49FA-8281-D53087D534DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -49885,7 +49885,7 @@ WHERE FS02.Fecha IS NULL</property>
                       dataType="System.String"
                       description="The name of the database object to copy data into."
                       expressionType="Notify"
-                      name="BulkInsertTableName">[dbo].[SaldoLiquidacionPrestamo]</property>
+                      name="BulkInsertTableName">[SaldoLiquidacionPrestamo]</property>
                     <property
                       dataType="System.Boolean"
                       description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
@@ -49978,47 +49978,11 @@ WHERE FS02.Fecha IS NULL</property>
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Creditos]"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CREDITOS]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[COMPENSATORIOS]"
-                          cachedDataType="r8"
-                          cachedName="COMPENSATORIOS"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Compensatorios]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[COMPENSATORIOS]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[PUNITORIOS]"
-                          cachedDataType="r8"
-                          cachedName="PUNITORIOS"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Punitorios]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[PUNITORIOS]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[CARGOS_EMISION]"
-                          cachedDataType="r8"
-                          cachedName="CARGOS_EMISION"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Emision]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_EMISION]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[CARGOS_RENOVACION]"
-                          cachedDataType="r8"
-                          cachedName="CARGOS_RENOVACION"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Renovacion]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_RENOVACION]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ULT_LIQ]"
-                          cachedDataType="r8"
-                          cachedName="ULT_LIQ"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Ult_Liq]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ULT_LIQ]" />
-                        <inputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[FUTURA]"
                           cachedDataType="r8"
                           cachedName="FUTURA"
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Futura]"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FUTURA]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[COMPRAS]"
-                          cachedDataType="r8"
-                          cachedName="COMPRAS"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Compras]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[COMPRAS]" />
                         <inputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[NOMBRE_SUCURSAL]"
                           cachedCodepage="1252"
@@ -50034,39 +49998,17 @@ WHERE FS02.Fecha IS NULL</property>
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo]"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[PRESTAMOS]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID_TABLA]"
                           cachedDataType="r8"
-                          cachedName="PRESTAMOS"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Prestamos]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[PRESTAMOS]" />
+                          cachedName="ID_TABLA"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Tabla]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_TABLA]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[NOTA]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="200"
-                          cachedName="NOTA"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Nota]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOTA]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[NOMBRE_CANAL_COBRO]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="40"
-                          cachedName="NOMBRE_CANAL_COBRO"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Canal_Cobro]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_CANAL_COBRO]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[TARJETA]"
-                          cachedDataType="r8"
-                          cachedName="TARJETA"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Tarjeta]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[TARJETA]" />
-                        <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[FECHA_FILTRO]"
-                          cachedDataType="dbDate"
-                          cachedName="FECHA_FILTRO"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[FECHA]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="FECHA"
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Fecha]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FECHA_FILTRO]" />
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FECHA]" />
                         <inputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID]"
                           cachedDataType="r8"
@@ -50074,35 +50016,47 @@ WHERE FS02.Fecha IS NULL</property>
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Usuario]"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID_TABLA]"
-                          cachedDataType="r8"
-                          cachedName="ID_TABLA"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Tabla]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_TABLA]" />
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[FECHA_FILTRO]"
+                          cachedDataType="dbDate"
+                          cachedName="FECHA_FILTRO"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Filtro]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FECHA_FILTRO]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID_EMPRESA]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[INTERES_SALDO]"
                           cachedDataType="r8"
-                          cachedName="ID_EMPRESA"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]" />
+                          cachedName="INTERES_SALDO"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Interes_Saldo]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[INTERES_SALDO]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID_SUCURSAL]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[CARGOS]"
                           cachedDataType="r8"
-                          cachedName="ID_SUCURSAL"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]" />
+                          cachedName="CARGOS"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID_AUTORIZACIONES]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[SALDO_TOTAL]"
                           cachedDataType="r8"
-                          cachedName="ID_AUTORIZACIONES"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Autorizaciones]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_AUTORIZACIONES]" />
+                          cachedName="SALDO_TOTAL"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Total]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_TOTAL]" />
                         <inputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[FECHA]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="FECHA"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Original]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FECHA]" />
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[CAP_FUTURO]"
+                          cachedDataType="r8"
+                          cachedName="CAP_FUTURO"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cap_Futuro]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CAP_FUTURO]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[INT_FUTURO]"
+                          cachedDataType="r8"
+                          cachedName="INT_FUTURO"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Int_Futuro]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[INT_FUTURO]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[SALDO_LIQ]"
+                          cachedDataType="r8"
+                          cachedName="SALDO_LIQ"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Liq]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_LIQ]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -50112,7 +50066,7 @@ WHERE FS02.Fecha IS NULL</property>
                           name="Cod_Tabla" />
                         <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Fecha]"
-                          dataType="dbDate"
+                          dataType="dbTimeStamp"
                           name="Fecha" />
                         <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Apellido]"
@@ -50131,18 +50085,6 @@ WHERE FS02.Fecha IS NULL</property>
                           dataType="r8"
                           name="Cod_Usuario" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
-                          dataType="r8"
-                          name="Cod_Empresa" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal]"
-                          dataType="r8"
-                          name="Cod_Sucursal" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Autorizaciones]"
-                          dataType="r8"
-                          name="Cod_Autorizaciones" />
-                        <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Debitos]"
                           dataType="r8"
                           name="Debitos" />
@@ -50151,33 +50093,9 @@ WHERE FS02.Fecha IS NULL</property>
                           dataType="r8"
                           name="Creditos" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Compensatorios]"
-                          dataType="r8"
-                          name="Compensatorios" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Punitorios]"
-                          dataType="r8"
-                          name="Punitorios" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Emision]"
-                          dataType="r8"
-                          name="Cargos_Emision" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Renovacion]"
-                          dataType="r8"
-                          name="Cargos_Renovacion" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Ult_Liq]"
-                          dataType="r8"
-                          name="Ult_Liq" />
-                        <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Futura]"
                           dataType="r8"
                           name="Futura" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Compras]"
-                          dataType="r8"
-                          name="Compras" />
                         <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Sucursal]"
                           codePage="1252"
@@ -50189,29 +50107,33 @@ WHERE FS02.Fecha IS NULL</property>
                           dataType="r8"
                           name="Saldo" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Prestamos]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Filtro]"
+                          dataType="dbDate"
+                          name="Fecha_Filtro" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Interes_Saldo]"
                           dataType="r8"
-                          name="Prestamos" />
+                          name="Interes_Saldo" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Nota]"
-                          codePage="1252"
-                          dataType="str"
-                          length="200"
-                          name="Nota" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Nombre_Canal_Cobro]"
-                          codePage="1252"
-                          dataType="str"
-                          length="40"
-                          name="Nombre_Canal_Cobro" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Tarjeta]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos]"
                           dataType="r8"
-                          name="Tarjeta" />
+                          name="Cargos" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Original]"
-                          dataType="dbTimeStamp"
-                          name="Fecha_Original" />
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Total]"
+                          dataType="r8"
+                          name="Saldo_Total" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cap_Futuro]"
+                          dataType="r8"
+                          name="Cap_Futuro" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Int_Futuro]"
+                          dataType="r8"
+                          name="Int_Futuro" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Liq]"
+                          dataType="r8"
+                          name="Saldo_Liq" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -50244,13 +50166,20 @@ WHERE FS02.Fecha IS NULL</property>
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH SaldosPorFecha AS (
     SELECT *, CAST(FECHA AS DATE) as FECHA_FILTRO,
         ROW_NUMBER() OVER (
-            PARTITION BY ID, CAST(FECHA AS DATE)
+            PARTITION BY ID
 	ORDER BY FECHA DESC
          ) as dateRn
     FROM SALDO_TARJETA_CIERRE
-    WHERE FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))
+    --WHERE FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))
 )
-SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
+SELECT s.ID_TABLA, s.ID, s.FECHA_FILTRO, s.FECHA, s.APELLIDO, s.NOMBRE, s.PRESTAMOS as SALDO, s.PUNITORIOS AS INTERES_SALDO,
+    ID_AUTORIZACIONES AS FUTURA, DEBITOS, CREDITOS, CARGOS_EMISION + CARGOS_RENOVACION AS CARGOS,
+	PRESTAMOS + ID_AUTORIZACIONES + CREDITOS AS SALDO_TOTAL, FUTURA AS CAP_FUTURO, TARJETA AS INT_FUTURO,
+	NOMBRE_SUCURSAL, PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION AS SALDO_LIQ
+FROM SaldosPorFecha s
+LEFT JOIN AyJStaging.dbo.CONSULTA_MORA on ID = ID_CLIENTE
+WHERE dateRn = 1 AND ID_GRADO_MORA &lt;= 106
+AND PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION + ID_AUTORIZACIONES + CREDITOS + DEBITOS &gt; 0</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -50336,33 +50265,6 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           name="ID"
                           truncationRowDisposition="IgnoreFailure" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
-                          name="ID_EMPRESA"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_SUCURSAL]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL]"
-                          name="ID_SUCURSAL"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_AUTORIZACIONES]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_AUTORIZACIONES]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_AUTORIZACIONES]"
-                          name="ID_AUTORIZACIONES"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[DEBITOS]"
                           dataType="r8"
                           errorOrTruncationOperation="Conversion"
@@ -50381,51 +50283,6 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           name="CREDITOS"
                           truncationRowDisposition="IgnoreFailure" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[COMPENSATORIOS]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPENSATORIOS]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[COMPENSATORIOS]"
-                          name="COMPENSATORIOS"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[PUNITORIOS]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[PUNITORIOS]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[PUNITORIOS]"
-                          name="PUNITORIOS"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_EMISION]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_EMISION]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_EMISION]"
-                          name="CARGOS_EMISION"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_RENOVACION]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_RENOVACION]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_RENOVACION]"
-                          name="CARGOS_RENOVACION"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ULT_LIQ]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ULT_LIQ]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ULT_LIQ]"
-                          name="ULT_LIQ"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FUTURA]"
                           dataType="r8"
                           errorOrTruncationOperation="Conversion"
@@ -50433,15 +50290,6 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[FUTURA]"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FUTURA]"
                           name="FUTURA"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[COMPRAS]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPRAS]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[COMPRAS]"
-                          name="COMPRAS"
                           truncationRowDisposition="IgnoreFailure" />
                         <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_SUCURSAL]"
@@ -50464,46 +50312,6 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           name="SALDO"
                           truncationRowDisposition="IgnoreFailure" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[PRESTAMOS]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[PRESTAMOS]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[PRESTAMOS]"
-                          name="PRESTAMOS"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOTA]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOTA]"
-                          length="200"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOTA]"
-                          name="NOTA"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_CANAL_COBRO]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CANAL_COBRO]"
-                          length="40"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[NOMBRE_CANAL_COBRO]"
-                          name="NOMBRE_CANAL_COBRO"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[TARJETA]"
-                          dataType="r8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[TARJETA]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[TARJETA]"
-                          name="TARJETA"
-                          truncationRowDisposition="IgnoreFailure" />
-                        <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[FECHA_FILTRO]"
                           dataType="dbDate"
                           errorOrTruncationOperation="Conversion"
@@ -50513,14 +50321,59 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           name="FECHA_FILTRO"
                           truncationRowDisposition="IgnoreFailure" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[dateRn]"
-                          dataType="i8"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[INTERES_SALDO]"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[dateRn]"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[dateRn]"
-                          name="dateRn"
-                          truncationRowDisposition="IgnoreFailure" />
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[INTERES_SALDO]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[INTERES_SALDO]"
+                          name="INTERES_SALDO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS]"
+                          name="CARGOS"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_TOTAL]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SALDO_TOTAL]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_TOTAL]"
+                          name="SALDO_TOTAL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CAP_FUTURO]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CAP_FUTURO]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CAP_FUTURO]"
+                          name="CAP_FUTURO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[INT_FUTURO]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[INT_FUTURO]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[INT_FUTURO]"
+                          name="INT_FUTURO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_LIQ]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SALDO_LIQ]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_LIQ]"
+                          name="SALDO_LIQ"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -50549,18 +50402,6 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           dataType="r8"
                           name="ID" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
-                          dataType="r8"
-                          name="ID_EMPRESA" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_SUCURSAL]"
-                          dataType="r8"
-                          name="ID_SUCURSAL" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_AUTORIZACIONES]"
-                          dataType="r8"
-                          name="ID_AUTORIZACIONES" />
-                        <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[DEBITOS]"
                           dataType="r8"
                           name="DEBITOS" />
@@ -50569,33 +50410,9 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           dataType="r8"
                           name="CREDITOS" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPENSATORIOS]"
-                          dataType="r8"
-                          name="COMPENSATORIOS" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[PUNITORIOS]"
-                          dataType="r8"
-                          name="PUNITORIOS" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_EMISION]"
-                          dataType="r8"
-                          name="CARGOS_EMISION" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_RENOVACION]"
-                          dataType="r8"
-                          name="CARGOS_RENOVACION" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ULT_LIQ]"
-                          dataType="r8"
-                          name="ULT_LIQ" />
-                        <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[FUTURA]"
                           dataType="r8"
                           name="FUTURA" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPRAS]"
-                          dataType="r8"
-                          name="COMPRAS" />
                         <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_SUCURSAL]"
                           codePage="1252"
@@ -50607,33 +50424,33 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           dataType="r8"
                           name="SALDO" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[PRESTAMOS]"
-                          dataType="r8"
-                          name="PRESTAMOS" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOTA]"
-                          codePage="1252"
-                          dataType="str"
-                          length="200"
-                          name="NOTA" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_CANAL_COBRO]"
-                          codePage="1252"
-                          dataType="str"
-                          length="40"
-                          name="NOMBRE_CANAL_COBRO" />
-                        <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[TARJETA]"
-                          dataType="r8"
-                          name="TARJETA" />
-                        <externalMetadataColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA_FILTRO]"
                           dataType="dbDate"
                           name="FECHA_FILTRO" />
                         <externalMetadataColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[dateRn]"
-                          dataType="i8"
-                          name="dateRn" />
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[INTERES_SALDO]"
+                          dataType="r8"
+                          name="INTERES_SALDO" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS]"
+                          dataType="r8"
+                          name="CARGOS" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SALDO_TOTAL]"
+                          dataType="r8"
+                          name="SALDO_TOTAL" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CAP_FUTURO]"
+                          dataType="r8"
+                          name="CAP_FUTURO" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[INT_FUTURO]"
+                          dataType="r8"
+                          name="INT_FUTURO" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SALDO_LIQ]"
+                          dataType="r8"
+                          name="SALDO_LIQ" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -50671,21 +50488,6 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID]"
                           name="ID" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
-                          name="ID_EMPRESA" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_SUCURSAL]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_SUCURSAL]"
-                          name="ID_SUCURSAL" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_AUTORIZACIONES]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_AUTORIZACIONES]"
-                          name="ID_AUTORIZACIONES" />
-                        <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[DEBITOS]"
                           dataType="r8"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[DEBITOS]"
@@ -50696,40 +50498,15 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CREDITOS]"
                           name="CREDITOS" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[COMPENSATORIOS]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[INTERES_SALDO]"
                           dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[COMPENSATORIOS]"
-                          name="COMPENSATORIOS" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[PUNITORIOS]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[PUNITORIOS]"
-                          name="PUNITORIOS" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_EMISION]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_EMISION]"
-                          name="CARGOS_EMISION" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_RENOVACION]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_RENOVACION]"
-                          name="CARGOS_RENOVACION" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ULT_LIQ]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ULT_LIQ]"
-                          name="ULT_LIQ" />
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[INTERES_SALDO]"
+                          name="INTERES_SALDO" />
                         <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[FUTURA]"
                           dataType="r8"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[FUTURA]"
                           name="FUTURA" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[COMPRAS]"
-                          dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[COMPRAS]"
-                          name="COMPRAS" />
                         <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_SUCURSAL]"
                           codePage="1252"
@@ -50743,39 +50520,35 @@ SELECT * FROM SaldosPorFecha WHERE dateRn = 1</property>
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO]"
                           name="SALDO" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[PRESTAMOS]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS]"
                           dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[PRESTAMOS]"
-                          name="PRESTAMOS" />
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS]"
+                          name="CARGOS" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[NOTA]"
-                          codePage="1252"
-                          dataType="str"
-                          length="200"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[NOTA]"
-                          name="NOTA" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CANAL_COBRO]"
-                          codePage="1252"
-                          dataType="str"
-                          length="40"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[NOMBRE_CANAL_COBRO]"
-                          name="NOMBRE_CANAL_COBRO" />
-                        <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[TARJETA]"
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO_TOTAL]"
                           dataType="r8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[TARJETA]"
-                          name="TARJETA" />
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO_TOTAL]"
+                          name="SALDO_TOTAL" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CAP_FUTURO]"
+                          dataType="r8"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CAP_FUTURO]"
+                          name="CAP_FUTURO" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[INT_FUTURO]"
+                          dataType="r8"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[INT_FUTURO]"
+                          name="INT_FUTURO" />
                         <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[FECHA_FILTRO]"
                           dataType="dbDate"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[FECHA_FILTRO]"
                           name="FECHA_FILTRO" />
                         <outputColumn
-                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[dateRn]"
-                          dataType="i8"
-                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[dateRn]"
-                          name="dateRn" />
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO_LIQ]"
+                          dataType="r8"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO_LIQ]"
+                          name="SALDO_LIQ" />
                         <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -60111,7 +59884,7 @@ FROM SALDOSTARJETAS</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-95.5080533854167,24.8161764705882,54.1827734375,11.43359375"
+              BoundingBox="-95.5080533854165,24.8161764705882,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
