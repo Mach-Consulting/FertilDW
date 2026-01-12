@@ -1,7 +1,7 @@
 USE [AyJDW]
 GO
 
-/****** Object:  Table [dbo].[SaldoLiquidacionPrestamo]    Script Date: 1/10/2026 10:06:20 PM ******/
+/****** Object:  Table [dbo].[SaldoLiquidacionPrestamo]    Script Date: 1/11/2026 10:20:13 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -25,6 +25,12 @@ CREATE TABLE [dbo].[SaldoLiquidacionPrestamo](
 	[Saldo_Total] [float] NULL,
 	[Cap_Futuro] [float] NULL,
 	[Int_Futuro] [float] NULL,
-	[Saldo_Liq] [float] NULL
+	[Saldo_Liq] [float] NULL,
+	[Sit5] [int] NULL,
+	[Cargos_Emision] [float] NULL,
+	[Cargos_Renovacion] [float] NULL,
+	[Cod_Grado_Mora] [float] NULL
 ) ON [PRIMARY]
 GO
+
+

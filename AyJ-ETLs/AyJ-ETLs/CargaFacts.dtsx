@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="364"
-  DTS:VersionGUID="{9FC637EA-B2AA-49FA-8281-D53087D534DB}">
+  DTS:VersionBuild="368"
+  DTS:VersionGUID="{DF334268-3C19-48B7-955F-FC7BC7EC6A37}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -50057,6 +50057,30 @@ WHERE FS02.Fecha IS NULL</property>
                           cachedName="SALDO_LIQ"
                           externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Liq]"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_LIQ]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[SIT5]"
+                          cachedDataType="i4"
+                          cachedName="SIT5"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Sit5]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SIT5]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[CARGOS_EMISION]"
+                          cachedDataType="r8"
+                          cachedName="CARGOS_EMISION"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Emision]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_EMISION]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[CARGOS_RENOVACION]"
+                          cachedDataType="r8"
+                          cachedName="CARGOS_RENOVACION"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Renovacion]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_RENOVACION]" />
+                        <inputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].Columns[ID_GRADO_MORA]"
+                          cachedDataType="r8"
+                          cachedName="ID_GRADO_MORA"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Grado_Mora]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_GRADO_MORA]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -50134,6 +50158,22 @@ WHERE FS02.Fecha IS NULL</property>
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Saldo_Liq]"
                           dataType="r8"
                           name="Saldo_Liq" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Sit5]"
+                          dataType="i4"
+                          name="Sit5" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Emision]"
+                          dataType="r8"
+                          name="Cargos_Emision" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cargos_Renovacion]"
+                          dataType="r8"
+                          name="Cargos_Renovacion" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Grado_Mora]"
+                          dataType="r8"
+                          name="Cod_Grado_Mora" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -50163,22 +50203,23 @@ WHERE FS02.Fecha IS NULL</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH SaldosPorFecha AS (
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--La última ejecución establece el saldo actual, junto con la mora.
+WITH SaldosPorFecha AS (
     SELECT *, CAST(FECHA AS DATE) as FECHA_FILTRO,
         ROW_NUMBER() OVER (
             PARTITION BY ID
 	ORDER BY FECHA DESC
          ) as dateRn
     FROM SALDO_TARJETA_CIERRE
-    --WHERE FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))
 )
-SELECT s.ID_TABLA, s.ID, s.FECHA_FILTRO, s.FECHA, s.APELLIDO, s.NOMBRE, s.PRESTAMOS as SALDO, s.PUNITORIOS AS INTERES_SALDO,
-    ID_AUTORIZACIONES AS FUTURA, DEBITOS, CREDITOS, CARGOS_EMISION + CARGOS_RENOVACION AS CARGOS,
-	PRESTAMOS + ID_AUTORIZACIONES + CREDITOS AS SALDO_TOTAL, FUTURA AS CAP_FUTURO, TARJETA AS INT_FUTURO,
-	NOMBRE_SUCURSAL, PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION AS SALDO_LIQ
+SELECT s.ID_TABLA, s.ID, s.FECHA_FILTRO, s.FECHA, s.APELLIDO, s.NOMBRE, s.PRESTAMOS as SALDO,
+    s.PUNITORIOS AS INTERES_SALDO, ID_AUTORIZACIONES AS FUTURA, DEBITOS, CREDITOS, CARGOS_EMISION, CARGOS_RENOVACION, 
+    CARGOS_EMISION + CARGOS_RENOVACION AS CARGOS,   PRESTAMOS + ID_AUTORIZACIONES + CREDITOS AS SALDO_TOTAL, 
+    FUTURA AS CAP_FUTURO, TARJETA AS INT_FUTURO, NOMBRE_SUCURSAL, PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION AS SALDO_LIQ,
+    COALESCE(ID_GRADO_MORA, 101) AS ID_GRADO_MORA, CASE WHEN ID_GRADO_MORA = 107 THEN 1 ELSE 0 END as SIT5
 FROM SaldosPorFecha s
 LEFT JOIN AyJStaging.dbo.CONSULTA_MORA on ID = ID_CLIENTE
-WHERE dateRn = 1 AND ID_GRADO_MORA &lt;= 106
+WHERE dateRn = 1
 AND PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION + ID_AUTORIZACIONES + CREDITOS + DEBITOS &gt; 0</property>
                     <property
                       dataType="System.String"
@@ -50374,6 +50415,42 @@ AND PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION + ID_AUTORIZACIONES + CREDITO
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SALDO_LIQ]"
                           name="SALDO_LIQ"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_EMISION]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_EMISION]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_EMISION]"
+                          name="CARGOS_EMISION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_RENOVACION]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_RENOVACION]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[CARGOS_RENOVACION]"
+                          name="CARGOS_RENOVACION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_GRADO_MORA]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_GRADO_MORA]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[ID_GRADO_MORA]"
+                          name="ID_GRADO_MORA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SIT5]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SIT5]"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].Columns[SIT5]"
+                          name="SIT5"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -50451,6 +50528,22 @@ AND PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION + ID_AUTORIZACIONES + CREDITO
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SALDO_LIQ]"
                           dataType="r8"
                           name="SALDO_LIQ" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_EMISION]"
+                          dataType="r8"
+                          name="CARGOS_EMISION" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[CARGOS_RENOVACION]"
+                          dataType="r8"
+                          name="CARGOS_RENOVACION" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_GRADO_MORA]"
+                          dataType="r8"
+                          name="ID_GRADO_MORA" />
+                        <externalMetadataColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Output].ExternalColumns[SIT5]"
+                          dataType="i4"
+                          name="SIT5" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -50520,6 +50613,16 @@ AND PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION + ID_AUTORIZACIONES + CREDITO
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO]"
                           name="SALDO" />
                         <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_EMISION]"
+                          dataType="r8"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_EMISION]"
+                          name="CARGOS_EMISION" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_RENOVACION]"
+                          dataType="r8"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS_RENOVACION]"
+                          name="CARGOS_RENOVACION" />
+                        <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS]"
                           dataType="r8"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[CARGOS]"
@@ -50549,6 +50652,16 @@ AND PRESTAMOS + CARGOS_EMISION + CARGOS_RENOVACION + ID_AUTORIZACIONES + CREDITO
                           dataType="r8"
                           lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SALDO_LIQ]"
                           name="SALDO_LIQ" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_GRADO_MORA]"
+                          dataType="r8"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ID_GRADO_MORA]"
+                          name="ID_GRADO_MORA" />
+                        <outputColumn
+                          refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SIT5]"
+                          dataType="i4"
+                          lineageId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[SIT5]"
+                          name="SIT5" />
                         <outputColumn
                           refId="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -52901,33 +53014,20 @@ FROM SALDOSTARJETAS</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Saldos\DELETE SaldoLiquidacionPrestamo"
+          DTS:refId="Package\Saldos\TRUNCATE SaldoLiquidacionPrestamo"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Delete table SaldoLiquidacionPrestamo"
+          DTS:Description="Truncate table SaldoLiquidacionPrestamo"
           DTS:DTSID="{8511BD7C-8735-463A-A606-FCC73DA773CC}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="DELETE SaldoLiquidacionPrestamo"
+          DTS:ObjectName="TRUNCATE SaldoLiquidacionPrestamo"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
-              SQLTask:SqlStatementSource="DELETE FROM SaldoLiquidacionPrestamo WHERE Fecha BETWEEN ? AND ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="0"
-                SQLTask:DtsVariableName="User::FechaDesde"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="1"
-                SQLTask:DtsVariableName="User::FechaHasta"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
+              SQLTask:SqlStatementSource="TRUNCATE TABLE SaldoLiquidacionPrestamo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -53063,12 +53163,12 @@ FROM SALDOSTARJETAS</property>
           DTS:From="Package\Saldos\Carga SaldosPrestamos"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 7"
-          DTS:To="Package\Saldos\DELETE SaldoLiquidacionPrestamo" />
+          DTS:To="Package\Saldos\TRUNCATE SaldoLiquidacionPrestamo" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Saldos.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
           DTS:DTSID="{2050E9FF-F8F5-4186-AA24-BE899431CCEF}"
-          DTS:From="Package\Saldos\DELETE SaldoLiquidacionPrestamo"
+          DTS:From="Package\Saldos\TRUNCATE SaldoLiquidacionPrestamo"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
           DTS:To="Package\Saldos\Carga SaldoLiquidacionPrestamo" />
@@ -54686,8 +54786,8 @@ FROM SALDOSTARJETAS</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="256,42"
-          Id="Package\Saldos\DELETE SaldoLiquidacionPrestamo"
+          Size="273,42"
+          Id="Package\Saldos\TRUNCATE SaldoLiquidacionPrestamo"
           TopLeft="686,253" />
         <NodeLayout
           Size="243,42"
@@ -54699,9 +54799,9 @@ FROM SALDOSTARJETAS</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-249,128"
+              EndConnector="-240.5,128"
               Start="0,0"
-              End="-249,120.5">
+              End="-240.5,120.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -54712,13 +54812,13 @@ FROM SALDOSTARJETAS</property>
                     Point2="0,64"
                     Point3="-4,64" />
                   <mssgle:LineSegment
-                    End="-245,64" />
+                    End="-236.5,64" />
                   <mssgle:CubicBezierSegment
-                    Point1="-245,64"
-                    Point2="-249,64"
-                    Point3="-249,68" />
+                    Point1="-236.5,64"
+                    Point2="-240.5,64"
+                    Point3="-240.5,68" />
                   <mssgle:LineSegment
-                    End="-249,120.5" />
+                    End="-240.5,120.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -54729,18 +54829,18 @@ FROM SALDOSTARJETAS</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Saldos.PrecedenceConstraints[Constraint 8]"
-          TopLeft="942,277.5">
+          TopLeft="959,277.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="91,0"
+              EndConnector="74,0"
               Start="0,0"
-              End="83.5,0">
+              End="66.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="83.5,0" />
+                    End="66.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
