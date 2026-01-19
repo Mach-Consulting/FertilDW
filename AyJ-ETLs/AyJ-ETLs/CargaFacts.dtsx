@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="371"
-  DTS:VersionGUID="{9465A320-9E28-4431-AB36-0D203BFE2E35}">
+  DTS:VersionBuild="372"
+  DTS:VersionGUID="{E870B718-FB9B-433F-B899-6684C7C48E8C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -39804,7 +39804,9 @@ N'' AS Calle,
 N'' AS Numero,
 N'' AS Piso,
 N'' AS Depto,
-N'' AS Telefono
+N'' AS Telefono,
+0 as Cod_Rubro,
+0 as Cod_SubRubro
 FROM FactPagosComercios FPC
 LEFT JOIN DimComercio COM
 ON FPC.Cod_Comercio = COM.Cod_Comercio
@@ -39952,6 +39954,24 @@ WHERE COM.Cod_Comercio IS NULL</property>
                               lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Telefono]"
                               name="Telefono"
                               truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Cod_Rubro]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[Cod_Rubro]"
+                              lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Cod_Rubro]"
+                              name="Cod_Rubro"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Cod_SubRubro]"
+                              dataType="i4"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[Cod_SubRubro]"
+                              lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Cod_SubRubro]"
+                              name="Cod_SubRubro"
+                              truncationRowDisposition="FailComponent" />
                           </outputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -40008,6 +40028,14 @@ WHERE COM.Cod_Comercio IS NULL</property>
                               dataType="wstr"
                               length="1"
                               name="Telefono" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[Cod_Rubro]"
+                              dataType="i4"
+                              name="Cod_Rubro" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[Cod_SubRubro]"
+                              dataType="i4"
+                              name="Cod_SubRubro" />
                           </externalMetadataColumns>
                         </output>
                         <output
@@ -40079,6 +40107,16 @@ WHERE COM.Cod_Comercio IS NULL</property>
                               length="1"
                               lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[Telefono]"
                               name="Telefono" />
+                            <outputColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[Cod_Rubro]"
+                              dataType="i4"
+                              lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[Cod_Rubro]"
+                              name="Cod_Rubro" />
+                            <outputColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[Cod_SubRubro]"
+                              dataType="i4"
+                              lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[Cod_SubRubro]"
+                              name="Cod_SubRubro" />
                             <outputColumn
                               refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                               dataType="i4"
@@ -40345,6 +40383,18 @@ WHERE COM.Cod_Comercio IS NULL</property>
                               cachedName="Telefono"
                               externalMetadataColumnId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
                               lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Telefono]" />
+                            <inputColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].Columns[Cod_Rubro]"
+                              cachedDataType="i4"
+                              cachedName="Cod_Rubro"
+                              externalMetadataColumnId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Rubro]"
+                              lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Cod_Rubro]" />
+                            <inputColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].Columns[Cod_SubRubro]"
+                              cachedDataType="i4"
+                              cachedName="Cod_SubRubro"
+                              externalMetadataColumnId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cod_SubRubro]"
+                              lineageId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging.Outputs[OLE DB Source Output].Columns[Cod_SubRubro]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -40433,6 +40483,16 @@ WHERE COM.Cod_Comercio IS NULL</property>
                               dataType="wstr"
                               length="10"
                               name="Activo" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cod_Rubro]"
+                              dataType="numeric"
+                              name="Cod_Rubro"
+                              precision="10" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cod_SubRubro]"
+                              dataType="numeric"
+                              name="Cod_SubRubro"
+                              precision="10" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -55254,7 +55314,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -55325,7 +55387,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -56588,7 +56652,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\Carga FactPagosComercios">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\DW\Carga FactPagosComercios\Data Conversion"
@@ -56632,7 +56696,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -56666,7 +56732,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -57200,7 +57268,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\Carga FactSolicitudesPrestamos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\DW\Carga FactSolicitudesPrestamos\AyJ Staging"
@@ -57244,7 +57312,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57278,7 +57348,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -57457,7 +57529,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactAjustesSaldos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="116,42"
           Id="Package\DW\FactAjustesSaldos\Staging"
@@ -57501,7 +57573,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -57535,7 +57609,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -58507,7 +58583,11 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactIngresosComercios">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\DW\FactIngresosComercios\Stagging"
+          TopLeft="90,28" />
         <NodeLayout
           Size="161,42"
           Id="Package\DW\FactIngresosComercios\Data Conversion"
@@ -58516,10 +58596,36 @@ FROM SALDOSTARJETAS</property>
           Size="195,42"
           Id="Package\DW\FactIngresosComercios\FactIngresosComercios"
           TopLeft="263,160" />
-        <NodeLayout
-          Size="122,42"
-          Id="Package\DW\FactIngresosComercios\Stagging"
-          TopLeft="90,28" />
+        <EdgeLayout
+          Id="Package\DW\FactIngresosComercios.Paths[Data Conversion Output]"
+          TopLeft="349,118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5,42"
+              Start="0,0"
+              End="11.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="7.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.5,0"
+                    Point2="11.5,0"
+                    Point3="11.5,4" />
+                  <mssgle:LineSegment
+                    End="11.5,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DW\FactIngresosComercios.Paths[OLE DB Source Output]"
           TopLeft="151,70">
@@ -58551,35 +58657,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DW\FactIngresosComercios.Paths[Data Conversion Output]"
-          TopLeft="349,118">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.5,42"
-              Start="0,0"
-              End="11.5,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="7.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.5,0"
-                    Point2="11.5,0"
-                    Point3="11.5,4" />
-                  <mssgle:LineSegment
-                    End="11.5,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -59443,7 +59523,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -59537,7 +59619,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60307,7 +60391,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60401,7 +60487,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60524,7 +60612,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60618,7 +60708,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -61461,7 +61553,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\Saldos\Carga SaldoLiquidacionPrestamo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="116,42"
           Id="Package\Saldos\Carga SaldoLiquidacionPrestamo\Staging"
@@ -61470,6 +61562,10 @@ FROM SALDOSTARJETAS</property>
           Size="161,42"
           Id="Package\Saldos\Carga SaldoLiquidacionPrestamo\Data Conversion"
           TopLeft="222,183" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW"
+          TopLeft="444,262" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldoLiquidacionPrestamo.Paths[OLE DB Source Output]"
           TopLeft="132,122">
@@ -61501,13 +61597,11 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="122,42"
-          Id="Package\Saldos\Carga SaldoLiquidacionPrestamo\SQL DW"
-          TopLeft="444,262" />
         <EdgeLayout
           Id="Package\Saldos\Carga SaldoLiquidacionPrestamo.Paths[Data Conversion Output]"
           TopLeft="302.5,225">
@@ -61539,7 +61633,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -61565,7 +61661,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\Saldos\Carga SaldosBase">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\Saldos\Carga SaldosBase\Data Conversion"
@@ -61609,7 +61705,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -61643,7 +61741,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -61777,7 +61877,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\Saldos\Carga SaldosPrestamos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\Saldos\Carga SaldosPrestamos\Data Conversion"
@@ -61809,7 +61909,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -61843,7 +61945,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
