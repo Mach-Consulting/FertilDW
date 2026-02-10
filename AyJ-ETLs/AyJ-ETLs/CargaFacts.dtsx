@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaFacts"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="372"
-  DTS:VersionGUID="{E870B718-FB9B-433F-B899-6684C7C48E8C}">
+  DTS:VersionBuild="382"
+  DTS:VersionGUID="{52FCC80D-C813-4DA4-A867-26A991C28606}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -384,6 +384,12 @@ GROUP BY SOL.ID_PERSO</property>
                           dataType="numeric"
                           name="Cod_Sucursal"
                           precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\Carga de Dimensiones Relacionadas\Actualizacion DimCliente\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Empresa_Laboral]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Empresa_Laboral" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -9942,6 +9948,816 @@ GROUP BY TLCD.ID_LIQUIDACION_CLI</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\DW\Carga FactPagosClientes"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{1C0553E7-411E-4552-ACD5-1CBCD91A731B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga FactPagosClientes"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DW\Carga FactPagosClientes\AyJ Staging"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AyJ Staging"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT p.id as ID_PAGO, p.FECHA as FECHAPAGO, p.COMPROBANTE, p.ID_COMERCIO, p.IMPORTE, p.ID_LIQUIDACION_COM,
+	p.ID_MONEDA, p.ID_EMPRESA, p.ENTREGADA, p.FECHA_ENTREGA, p.VENCIMIENTO, p.ID_SUCURSAL_COMERCIO, p.CONCEPTO,
+	CASE WHEN ISNULL(p.CODOP_ENTREGA, 0) = 0 OR ISNULL(p.NUMOP_ENTREGA,0) = 0 THEN 'Pendiente' ELSE 'Pagado' END ESTADO_PAGO,
+	tp.NOMBRE as TIPO_VALOR_PAGO, tp.CODIGO as TIPO_VALOR_CODIGO
+FROM PAGOS p 
+LEFT JOIN COMOPAGO cp ON p.CODOP = cp.CODOP AND p.NUMOP = cp.NUMOP
+LEFT JOIN TIPO_VALORES tp ON cp.ID_TIPO_VALORES = tp.ID
+WHERE p.ANULADA = 0</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Connections[OleDbConnection]"
+                      connectionManagerID="{AE7F97C1-A8A6-4F54-8FE0-F2CFF772EBE8}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Origen Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_PAGO]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_PAGO]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_PAGO]"
+                          name="ID_PAGO"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHAPAGO]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHAPAGO]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHAPAGO]"
+                          name="FECHAPAGO"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[COMPROBANTE]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPROBANTE]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[COMPROBANTE]"
+                          name="COMPROBANTE"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_COMERCIO]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO]"
+                          name="ID_COMERCIO"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[IMPORTE]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[IMPORTE]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[IMPORTE]"
+                          name="IMPORTE"
+                          precision="12"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_LIQUIDACION_COM]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_LIQUIDACION_COM]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_LIQUIDACION_COM]"
+                          name="ID_LIQUIDACION_COM"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_MONEDA]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_MONEDA]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_MONEDA]"
+                          name="ID_MONEDA"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
+                          name="ID_EMPRESA"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ENTREGADA]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ENTREGADA]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ENTREGADA]"
+                          name="ENTREGADA"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHA_ENTREGA]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA_ENTREGA]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHA_ENTREGA]"
+                          name="FECHA_ENTREGA"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[VENCIMIENTO]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[VENCIMIENTO]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[VENCIMIENTO]"
+                          name="VENCIMIENTO"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL_COMERCIO]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_SUCURSAL_COMERCIO]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL_COMERCIO]"
+                          name="ID_SUCURSAL_COMERCIO"
+                          precision="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[CONCEPTO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[CONCEPTO]"
+                          length="60"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[CONCEPTO]"
+                          name="CONCEPTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ESTADO_PAGO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ESTADO_PAGO]"
+                          length="9"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ESTADO_PAGO]"
+                          name="ESTADO_PAGO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO_VALOR_PAGO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[TIPO_VALOR_PAGO]"
+                          length="40"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO_VALOR_PAGO]"
+                          name="TIPO_VALOR_PAGO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO_VALOR_CODIGO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[TIPO_VALOR_CODIGO]"
+                          length="1"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO_VALOR_CODIGO]"
+                          name="TIPO_VALOR_CODIGO"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_PAGO]"
+                          dataType="numeric"
+                          name="ID_PAGO"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHAPAGO]"
+                          dataType="dbTimeStamp2"
+                          name="FECHAPAGO"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[COMPROBANTE]"
+                          dataType="numeric"
+                          name="COMPROBANTE"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_COMERCIO]"
+                          dataType="numeric"
+                          name="ID_COMERCIO"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[IMPORTE]"
+                          dataType="numeric"
+                          name="IMPORTE"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_LIQUIDACION_COM]"
+                          dataType="numeric"
+                          name="ID_LIQUIDACION_COM"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_MONEDA]"
+                          dataType="numeric"
+                          name="ID_MONEDA"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
+                          dataType="numeric"
+                          name="ID_EMPRESA"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ENTREGADA]"
+                          dataType="numeric"
+                          name="ENTREGADA"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA_ENTREGA]"
+                          dataType="dbTimeStamp2"
+                          name="FECHA_ENTREGA"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[VENCIMIENTO]"
+                          dataType="dbTimeStamp2"
+                          name="VENCIMIENTO"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_SUCURSAL_COMERCIO]"
+                          dataType="numeric"
+                          name="ID_SUCURSAL_COMERCIO"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[CONCEPTO]"
+                          dataType="wstr"
+                          length="60"
+                          name="CONCEPTO" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ESTADO_PAGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          name="ESTADO_PAGO" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[TIPO_VALOR_PAGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="TIPO_VALOR_PAGO" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[TIPO_VALOR_CODIGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="TIPO_VALOR_CODIGO" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_PAGO]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_PAGO]"
+                          name="ID_PAGO"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[FECHAPAGO]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[FECHAPAGO]"
+                          name="FECHAPAGO"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[COMPROBANTE]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[COMPROBANTE]"
+                          name="COMPROBANTE"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_COMERCIO]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_COMERCIO]"
+                          name="ID_COMERCIO"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[IMPORTE]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[IMPORTE]"
+                          name="IMPORTE"
+                          precision="12"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_LIQUIDACION_COM]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_LIQUIDACION_COM]"
+                          name="ID_LIQUIDACION_COM"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_MONEDA]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_MONEDA]"
+                          name="ID_MONEDA"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
+                          name="ID_EMPRESA"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ENTREGADA]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ENTREGADA]"
+                          name="ENTREGADA"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[FECHA_ENTREGA]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[FECHA_ENTREGA]"
+                          name="FECHA_ENTREGA"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[VENCIMIENTO]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[VENCIMIENTO]"
+                          name="VENCIMIENTO"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_SUCURSAL_COMERCIO]"
+                          dataType="numeric"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_SUCURSAL_COMERCIO]"
+                          name="ID_SUCURSAL_COMERCIO"
+                          precision="10" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[CONCEPTO]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[CONCEPTO]"
+                          name="CONCEPTO" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ESTADO_PAGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ESTADO_PAGO]"
+                          name="ESTADO_PAGO" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[TIPO_VALOR_PAGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[TIPO_VALOR_PAGO]"
+                          name="TIPO_VALOR_PAGO" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[TIPO_VALOR_CODIGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[TIPO_VALOR_CODIGO]"
+                          name="TIPO_VALOR_CODIGO" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Carga FactPagosClientes\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\DW\Carga FactPagosClientes\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\DW\Carga FactPagosClientes\Data Conversion.Inputs[Data Conversion Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\DW\Carga FactPagosClientes\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes"
+                  componentClassID="Microsoft.SQLServerDestination"
+                  contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+                  description="SQL Server Destination"
+                  name="SQL FactPagosClientes"
+                  version="5">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.String"
+                      description="The name of the database object to copy data into."
+                      expressionType="Notify"
+                      name="BulkInsertTableName">[FactPagosClientes]</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                      name="BulkInsertCheckConstraints">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                      expressionType="Notify"
+                      name="BulkInsertFirstRow">-1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                      name="BulkInsertFireTriggers">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                      name="BulkInsertKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="BulkInsertKeepNulls">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                      expressionType="Notify"
+                      name="BulkInsertLastRow">-1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                      name="BulkInsertMaxErrors">-1</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                      expressionType="Notify"
+                      name="BulkInsertOrder"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                      name="BulkInsertTablock">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                      expressionType="Notify"
+                      name="Timeout">30</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                      name="MaxInsertCommitSize">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Connections[OleDbConnection]"
+                      connectionManagerID="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Destino DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input]"
+                      hasSideEffects="true"
+                      name="SQL Server Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[COMPROBANTE]"
+                          cachedDataType="numeric"
+                          cachedName="COMPROBANTE"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Comprobante]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[COMPROBANTE]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[IMPORTE]"
+                          cachedDataType="numeric"
+                          cachedName="IMPORTE"
+                          cachedPrecision="12"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Importe]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[IMPORTE]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ENTREGADA]"
+                          cachedDataType="numeric"
+                          cachedName="ENTREGADA"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Entregada]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ENTREGADA]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[FECHA_ENTREGA]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="FECHA_ENTREGA"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Entrega]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHA_ENTREGA]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[VENCIMIENTO]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="VENCIMIENTO"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Vencimiento]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[VENCIMIENTO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[CONCEPTO]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="CONCEPTO"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Concepto]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[CONCEPTO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ESTADO_PAGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="ESTADO_PAGO"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Estado_Pago]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ESTADO_PAGO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[TIPO_VALOR_PAGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="TIPO_VALOR_PAGO"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Tipo_Valor_Pago]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO_VALOR_PAGO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[TIPO_VALOR_CODIGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="TIPO_VALOR_CODIGO"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Tipo_Valor_Codigo]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO_VALOR_CODIGO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ID_PAGO]"
+                          cachedDataType="numeric"
+                          cachedName="ID_PAGO"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Pago]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_PAGO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[FECHAPAGO]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="FECHAPAGO"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Pago]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHAPAGO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ID_COMERCIO]"
+                          cachedDataType="numeric"
+                          cachedName="ID_COMERCIO"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Comercio]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_COMERCIO]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ID_LIQUIDACION_COM]"
+                          cachedDataType="numeric"
+                          cachedName="ID_LIQUIDACION_COM"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Liquidacion_Com]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_LIQUIDACION_COM]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ID_MONEDA]"
+                          cachedDataType="numeric"
+                          cachedName="ID_MONEDA"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Moneda]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_MONEDA]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ID_EMPRESA]"
+                          cachedDataType="numeric"
+                          cachedName="ID_EMPRESA"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]" />
+                        <inputColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].Columns[ID_SUCURSAL_COMERCIO]"
+                          cachedDataType="numeric"
+                          cachedName="ID_SUCURSAL_COMERCIO"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal_Comercio]"
+                          lineageId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_SUCURSAL_COMERCIO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Pago]"
+                          dataType="numeric"
+                          name="Cod_Pago"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Pago]"
+                          dataType="dbTimeStamp2"
+                          name="Fecha_Pago"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Comprobante]"
+                          dataType="numeric"
+                          name="Comprobante"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Comercio]"
+                          dataType="numeric"
+                          name="Cod_Comercio"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Importe]"
+                          dataType="numeric"
+                          name="Importe"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Liquidacion_Com]"
+                          dataType="numeric"
+                          name="Cod_Liquidacion_Com"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Moneda]"
+                          dataType="numeric"
+                          name="Cod_Moneda"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Empresa]"
+                          dataType="numeric"
+                          name="Cod_Empresa"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Entregada]"
+                          dataType="numeric"
+                          name="Entregada"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Fecha_Entrega]"
+                          dataType="dbTimeStamp2"
+                          name="Fecha_Entrega"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Vencimiento]"
+                          dataType="dbTimeStamp2"
+                          name="Vencimiento"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Sucursal_Comercio]"
+                          dataType="numeric"
+                          name="Cod_Sucursal_Comercio"
+                          precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Concepto]"
+                          dataType="wstr"
+                          length="60"
+                          name="Concepto" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Estado_Pago]"
+                          codePage="1252"
+                          dataType="str"
+                          length="9"
+                          name="Estado_Pago" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Tipo_Valor_Pago]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Tipo_Valor_Pago" />
+                        <externalMetadataColumn
+                          refId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input].ExternalColumns[Tipo_Valor_Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Tipo_Valor_Codigo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DW\Carga FactPagosClientes.Paths[Data Conversion Output]"
+                  endId="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes.Inputs[SQL Server Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\DW\Carga FactPagosClientes\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\DW\Carga FactPagosClientes.Paths[OLE DB Source Output]"
+                  endId="Package\DW\Carga FactPagosClientes\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DW\Carga FactPagosClientes\AyJ Staging.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\DW\Carga FactPagosComercios"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -16373,7 +17189,7 @@ WHERE SOL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="DELETE FactIngresosClientes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="16">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -29669,6 +30485,19 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           cachedPrecision="10"
                           externalMetadataColumnId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Tipo_Pago]"
                           lineageId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].Columns[ID_TIPO_PAGO]" />
+                        <inputColumn
+                          refId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].Columns[VENCIMIENTO]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="VENCIMIENTO"
+                          externalMetadataColumnId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].ExternalColumns[Vencimiento]"
+                          lineageId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].Columns[VENCIMIENTO]" />
+                        <inputColumn
+                          refId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].Columns[ID]"
+                          cachedDataType="numeric"
+                          cachedName="ID"
+                          cachedPrecision="10"
+                          externalMetadataColumnId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].Columns[ID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -29759,6 +30588,10 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           dataType="numeric"
                           name="Id"
                           precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactLiquidacionesComercios\SQL FactLiquidacionesComercios.Inputs[SQL Server Destination Input].ExternalColumns[Vencimiento]"
+                          dataType="dbTimeStamp"
+                          name="Vencimiento" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -29788,7 +30621,9 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM TARJETAS_LIQUIDA_COM</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TLC.*, VENCIMIENTO FROM TARJETAS_LIQUIDA_COM TLC
+LEFT JOIN (SELECT ID_LIQUIDACION_COM, MAX(VENCIMIENTO) as VENCIMIENTO FROM TARJETAS_LIQUIDA_COM_DETA
+	GROUP BY ID_LIQUIDACION_COM) as TLCD ON TLC.ID_LIQUIDACION_COM = TLCD.ID_LIQUIDACION_COM</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -30067,6 +30902,15 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           name="ID_CALENDARIO"
                           precision="10"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].Columns[VENCIMIENTO]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].ExternalColumns[VENCIMIENTO]"
+                          lineageId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].Columns[VENCIMIENTO]"
+                          name="VENCIMIENTO"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -30193,6 +31037,10 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           dataType="numeric"
                           name="ID_CALENDARIO"
                           precision="10" />
+                        <externalMetadataColumn
+                          refId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Output].ExternalColumns[VENCIMIENTO]"
+                          dataType="dbTimeStamp"
+                          name="VENCIMIENTO" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -30347,6 +31195,11 @@ WHERE TBL.FECHA BETWEEN cast( ? as char(8))  AND cast( ? as char(8))</property>
                           lineageId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Error Output].Columns[ID_CALENDARIO]"
                           name="ID_CALENDARIO"
                           precision="10" />
+                        <outputColumn
+                          refId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Error Output].Columns[VENCIMIENTO]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Error Output].Columns[VENCIMIENTO]"
+                          name="VENCIMIENTO" />
                         <outputColumn
                           refId="Package\DW\FactLiquidacionesComercios\Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -36515,6 +37368,12 @@ WHERE DimCliente.Cod_Cliente IS NULL</property>
                               dataType="numeric"
                               name="Cod_Sucursal"
                               precision="10" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactAutorizacionesPrestamos\Carga DimClientes\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Empresa_Laboral]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="Empresa_Laboral" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -37961,6 +38820,12 @@ WHERE CLI.Cod_Cliente IS NULL</property>
                               dataType="numeric"
                               name="Cod_Sucursal"
                               precision="10" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactAutorizacionesTarjetas\Carga DimClientes\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Empresa_Laboral]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="Empresa_Laboral" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -42046,6 +42911,12 @@ WHERE DimCliente.Cod_Cliente IS NULL</property>
                               dataType="numeric"
                               name="Cod_Sucursal"
                               precision="10" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactSolicitudes\Carga DimClientes\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Empresa_Laboral]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="Empresa_Laboral" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -44973,6 +45844,12 @@ WHERE DimCliente.Cod_Cliente IS NULL</property>
                               dataType="numeric"
                               name="Cod_Sucursal"
                               precision="10" />
+                            <externalMetadataColumn
+                              refId="Package\DW\Faltantes FactSolicitudesPrestamos\Carga DimClientes\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Empresa_Laboral]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              name="Empresa_Laboral" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -47773,7 +48650,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAjustesSaldos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="18">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47790,7 +48667,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="19">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47807,7 +48684,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="21">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47837,7 +48714,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactAutorizacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47867,7 +48744,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobranzas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="15">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47897,7 +48774,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobros"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="16">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47927,7 +48804,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCobrosJudiciales"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47957,7 +48834,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCompras"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="17">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -47987,7 +48864,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactConsumos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="18">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48017,7 +48894,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactCuentasCorrientes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="19">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48047,7 +48924,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactDeadline"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="20">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48077,7 +48954,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactDevengamientoPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="20">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48107,7 +48984,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactGestiones"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="21">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48137,7 +49014,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="26">
+          DTS:ThreadHint="23">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48167,7 +49044,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactIngresosPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="27">
+          DTS:ThreadHint="22">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48197,7 +49074,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactIngresosTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="24">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48227,7 +49104,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidaciones"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48257,7 +49134,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidacionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="23">
+          DTS:ThreadHint="25">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48274,7 +49151,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactLiquidacionesTarjetas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="24">
+          DTS:ThreadHint="26">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48296,6 +49173,23 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\DW\TRUNCATE FactPagosClientes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Truncate FactPagosClientes table"
+          DTS:DTSID="{A93F9D71-C223-4D07-BF6F-6748CE2B2FCF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE FactPagosClientes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="28">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE FactPagosClientes;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\DW\TRUNCATE FactPagosComercios"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task;"
@@ -48304,7 +49198,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPagosComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48334,7 +49228,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPasajesJudiciales"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48364,7 +49258,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPlasticos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48394,7 +49288,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactPromocionesComercios"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="25">
+          DTS:ThreadHint="27">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48411,7 +49305,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSaldosMora"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48441,7 +49335,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSolicitudes"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48471,7 +49365,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE FactSolicitudesPrestamos"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -48501,7 +49395,7 @@ WHERE VEN.Cod_Vendedor IS NULL</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate FactSolicitudesRapidas"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="22">
+          DTS:ThreadHint="17">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -49946,6 +50840,14 @@ WHERE FS02.Fecha IS NULL</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 35"
           DTS:To="Package\DW\FactAjustesSaldos" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DW.PrecedenceConstraints[Constraint 36]"
+          DTS:CreationName=""
+          DTS:DTSID="{19109E6C-6256-4249-AA80-BE16418FE6B2}"
+          DTS:From="Package\DW\TRUNCATE FactPagosClientes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 36"
+          DTS:To="Package\DW\Carga FactPagosClientes" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DW.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
@@ -53240,7 +54142,7 @@ FROM SALDOSTARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SaldosBase"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -53257,7 +54159,7 @@ FROM SALDOSTARJETAS</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE SaldosCapitalBase"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -54781,6 +55683,36 @@ FROM SALDOSTARJETAS</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="212,42"
+          Id="Package\DW\TRUNCATE FactPagosClientes"
+          TopLeft="33,179" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\DW\Carga FactPagosClientes"
+          TopLeft="434,176" />
+        <EdgeLayout
+          Id="Package\DW.PrecedenceConstraints[Constraint 36]"
+          TopLeft="245,198.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189,0"
+              Start="0,0"
+              End="181.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="181.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -55314,9 +56246,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -55822,7 +56752,11 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\Carga FactAutorizacionesTarjetas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\Carga FactAutorizacionesTarjetas\Data Conversion"
+          TopLeft="296,136" />
         <NodeLayout
           Size="212,42"
           Id="Package\DW\Carga FactAutorizacionesTarjetas\FactAutorizacionesTarjetas"
@@ -55831,44 +56765,6 @@ FROM SALDOSTARJETAS</property>
           Size="138,42"
           Id="Package\DW\Carga FactAutorizacionesTarjetas\AyJ Staging"
           TopLeft="105,57" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DW\Carga FactAutorizacionesTarjetas\Data Conversion"
-          TopLeft="296,136" />
-        <EdgeLayout
-          Id="Package\DW\Carga FactAutorizacionesTarjetas.Paths[OLE DB Source Output]"
-          TopLeft="174,99">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="202.5,37"
-              Start="0,0"
-              End="202.5,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.5"
-                    Point2="0,18.5"
-                    Point3="4,18.5" />
-                  <mssgle:LineSegment
-                    End="198.5,18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="198.5,18.5"
-                    Point2="202.5,18.5"
-                    Point3="202.5,22.5" />
-                  <mssgle:LineSegment
-                    End="202.5,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DW\Carga FactAutorizacionesTarjetas.Paths[Data Conversion Output]"
           TopLeft="376.5,178">
@@ -55900,7 +56796,45 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DW\Carga FactAutorizacionesTarjetas.Paths[OLE DB Source Output]"
+          TopLeft="174,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="202.5,37"
+              Start="0,0"
+              End="202.5,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="198.5,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="198.5,18.5"
+                    Point2="202.5,18.5"
+                    Point3="202.5,22.5" />
+                  <mssgle:LineSegment
+                    End="202.5,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -56652,7 +57586,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\Carga FactPagosComercios">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="161,42"
           Id="Package\DW\Carga FactPagosComercios\Data Conversion"
@@ -56696,9 +57630,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -56732,9 +57664,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -58810,7 +59740,7 @@ FROM SALDOSTARJETAS</property>
     design-time-name="Package\DW\FactLiquidacionesComercios">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="116,42"
           Id="Package\DW\FactLiquidacionesComercios\Staging"
@@ -58854,7 +59784,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -58888,7 +59820,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -59523,9 +60457,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -59619,9 +60551,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -59744,9 +60674,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -59840,9 +60768,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60132,29 +61058,29 @@ FROM SALDOSTARJETAS</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="161,42"
-          Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Data Conversion"
-          TopLeft="214,96" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination"
-          TopLeft="37,295" />
-        <NodeLayout
           Size="173,42"
           Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\OLE DB Command 1"
           TopLeft="495,294" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Data Conversion"
+          TopLeft="214,96" />
         <NodeLayout
           Size="173,42"
           Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\OLE DB Command"
           TopLeft="263,290" />
         <NodeLayout
+          Size="138,42"
+          Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging"
+          TopLeft="224,16" />
+        <NodeLayout
           Size="216,42"
           Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Slowly Changing Dimension"
           TopLeft="183,204" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging"
-          TopLeft="224,16" />
+          Size="165,42"
+          Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination"
+          TopLeft="37,295" />
         <EdgeLayout
           Id="Package\DW\Faltantes FactPagosComercios\Carga DimComercio.Paths[OLE DB Source Output]"
           TopLeft="293.75,58">
@@ -60174,7 +61100,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60268,7 +61196,9 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60311,6 +61241,14 @@ FROM SALDOSTARJETAS</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\Insert Destination">
     <Properties>
       <Property>
@@ -60320,14 +61258,6 @@ FROM SALDOSTARJETAS</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DW\Faltantes FactPagosComercios\Carga DimComercio\AyJ Staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -60391,9 +61321,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -60487,9 +61415,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -61054,9 +61980,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -61150,9 +62074,7 @@ FROM SALDOSTARJETAS</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -62071,6 +62993,110 @@ FROM SALDOSTARJETAS</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Saldos\Carga SaldosTarjetas\SQL SaldosTarjetas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DW\Carga FactPagosClientes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\DW\Carga FactPagosClientes\AyJ Staging"
+          TopLeft="28,16" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DW\Carga FactPagosClientes\Data Conversion"
+          TopLeft="188,99" />
+        <EdgeLayout
+          Id="Package\DW\Carga FactPagosClientes.Paths[OLE DB Source Output]"
+          TopLeft="97,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.5,41"
+              Start="0,0"
+              End="171.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="167.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="167.5,20.5"
+                    Point2="171.5,20.5"
+                    Point3="171.5,24.5" />
+                  <mssgle:LineSegment
+                    End="171.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="196,42"
+          Id="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes"
+          TopLeft="393,180" />
+        <EdgeLayout
+          Id="Package\DW\Carga FactPagosClientes.Paths[Data Conversion Output]"
+          TopLeft="268.5,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="222.5,39"
+              Start="0,0"
+              End="222.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="4,19.5" />
+                  <mssgle:LineSegment
+                    End="218.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="218.5,19.5"
+                    Point2="222.5,19.5"
+                    Point3="222.5,23.5" />
+                  <mssgle:LineSegment
+                    End="222.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Carga FactPagosClientes\AyJ Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DW\Carga FactPagosClientes\SQL FactPagosClientes">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

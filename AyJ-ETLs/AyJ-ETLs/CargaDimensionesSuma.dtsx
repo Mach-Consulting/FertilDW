@@ -12,8 +12,8 @@
   DTS:ObjectName="CargaDimensionesSuma"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="210"
-  DTS:VersionGUID="{D3B34018-3E48-4052-88D8-43E77548219E}">
+  DTS:VersionBuild="219"
+  DTS:VersionGUID="{57CBA552-D58C-44F4-A18B-0D0810D11659}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -24909,6 +24909,464 @@ LEFT JOIN [suma].[CIUDADES] c ON d.ID_CIUDADES = c.ID</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\DFT_DimUsuariosBloqueos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{926250CB-D9AB-47F3-A513-43D618100412}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DimUsuariosBloqueos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AyJ Staging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[suma].[USUARIOS_BLOQUEOS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Connections[OleDbConnection]"
+                  connectionManagerID="{AE7F97C1-A8A6-4F54-8FE0-F2CFF772EBE8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Origen Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      precision="16"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_USUARIO]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_USUARIO]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_USUARIO]"
+                      name="ID_USUARIO"
+                      precision="16"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_OPERADOR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_OPERADOR]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_OPERADOR]"
+                      name="ID_OPERADOR"
+                      precision="16"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHA]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHA]"
+                      name="FECHA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[TIPO]"
+                      length="20"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO]"
+                      name="TIPO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[MOTIVO]"
+                      length="1000"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[MOTIVO]"
+                      name="MOTIVO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="numeric"
+                      name="ID"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_USUARIO]"
+                      dataType="numeric"
+                      name="ID_USUARIO"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[ID_OPERADOR]"
+                      dataType="numeric"
+                      name="ID_OPERADOR"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="TIPO" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].ExternalColumns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="MOTIVO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_USUARIO]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_USUARIO]"
+                      name="ID_USUARIO"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_OPERADOR]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ID_OPERADOR]"
+                      name="ID_OPERADOR"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                      name="FECHA" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[TIPO]"
+                      name="TIPO" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[MOTIVO]"
+                      name="MOTIVO" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DimUsuariosBloqueos\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Inputs[Data Conversion Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="SQL DimUsuariosBloqueos"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[suma].[DimUsuariosBloqueos]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Connections[OleDbConnection]"
+                  connectionManagerID="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destino DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].Columns[FECHA]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Fecha]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[FECHA]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].Columns[TIPO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="TIPO"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Tipo]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[TIPO]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].Columns[MOTIVO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1000"
+                      cachedName="MOTIVO"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Motivo]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[MOTIVO]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].Columns[ID]"
+                      cachedDataType="numeric"
+                      cachedName="ID"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_UsuariosBloqueos]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].Columns[ID_USUARIO]"
+                      cachedDataType="numeric"
+                      cachedName="ID_USUARIO"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Usuario]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_USUARIO]" />
+                    <inputColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].Columns[ID_OPERADOR]"
+                      cachedDataType="numeric"
+                      cachedName="ID_OPERADOR"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Operador]"
+                      lineageId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output].Columns[ID_OPERADOR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_UsuariosBloqueos]"
+                      dataType="numeric"
+                      name="Cod_UsuariosBloqueos"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Usuario]"
+                      dataType="numeric"
+                      name="Cod_Usuario"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Cod_Operador]"
+                      dataType="numeric"
+                      name="Cod_Operador"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Fecha]"
+                      dataType="dbTimeStamp"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Tipo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Tipo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input].ExternalColumns[Motivo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="Motivo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DimUsuariosBloqueos.Paths[Data Conversion Output]"
+              endId="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos.Inputs[SQL Server Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT_DimUsuariosBloqueos.Paths[OLE DB Source Output]"
+              endId="Package\DFT_DimUsuariosBloqueos\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_DimUsuariosBloqueos\AyJ Staging.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\DFT_DimUsuariosCVU"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -33879,6 +34337,452 @@ LEFT JOIN [suma].[CIUDADES] c ON d.ID_CIUDADES = c.ID</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\DFT_USUARIOS_BLOQUEOS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F66BE0C5-9AB3-4C33-93AC-D54380475854}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_USUARIOS_BLOQUEOS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Inputs[Data Conversion Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="SQL USUARIOS_BLOQUEOS"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[suma].[USUARIOS_BLOQUEOS]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">300</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Connections[OleDbConnection]"
+                  connectionManagerID="{FBCD144E-C80C-4428-B353-BEE98C85712E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Destino Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].Columns[ID]"
+                      cachedDataType="numeric"
+                      cachedName="ID"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].Columns[ID_USUARIO]"
+                      cachedDataType="numeric"
+                      cachedName="ID_USUARIO"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[ID_USUARIO]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID_USUARIO]" />
+                    <inputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].Columns[ID_OPERADOR]"
+                      cachedDataType="numeric"
+                      cachedName="ID_OPERADOR"
+                      cachedPrecision="16"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[ID_OPERADOR]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID_OPERADOR]" />
+                    <inputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].Columns[FECHA]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[FECHA]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[FECHA]" />
+                    <inputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].Columns[TIPO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="TIPO"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[TIPO]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[TIPO]" />
+                    <inputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].Columns[MOTIVO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1000"
+                      cachedName="MOTIVO"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[MOTIVO]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[MOTIVO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[ID]"
+                      dataType="numeric"
+                      name="ID"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[ID_USUARIO]"
+                      dataType="numeric"
+                      name="ID_USUARIO"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[ID_OPERADOR]"
+                      dataType="numeric"
+                      name="ID_OPERADOR"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[FECHA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="TIPO" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input].ExternalColumns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="MOTIVO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS"
+              componentClassID="Microsoft.SSISOracleSrc"
+              contactInfo="Oracle Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Oracle Source"
+              name="USUARIOS_BLOQUEOS"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"FERTIL_COIN"."USUARIOS_BLOQUEOS"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="Number of pre-fetched rows."
+                  expressionType="Notify"
+                  name="PrefetchCount">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Connections[ORACLEConnection]"
+                  connectionManagerID="{7401144A-3E13-48EF-8E7F-3F652DBCC4EB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Origen DB Suma]"
+                  description="The ORACLE runtime connection used to access the database."
+                  name="ORACLEConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="Oracle Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID]"
+                      name="ID"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID_USUARIO]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID_USUARIO]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID_USUARIO]"
+                      name="ID_USUARIO"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID_OPERADOR]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID_OPERADOR]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[ID_OPERADOR]"
+                      name="ID_OPERADOR"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[FECHA]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[FECHA]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[FECHA]"
+                      name="FECHA" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[TIPO]"
+                      length="20"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[TIPO]"
+                      name="TIPO" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[MOTIVO]"
+                      length="1000"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].Columns[MOTIVO]"
+                      name="MOTIVO" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID]"
+                      dataType="numeric"
+                      name="ID"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID_USUARIO]"
+                      dataType="numeric"
+                      name="ID_USUARIO"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID_OPERADOR]"
+                      dataType="numeric"
+                      name="ID_OPERADOR"
+                      precision="16" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[FECHA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="TIPO" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="MOTIVO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output]"
+                  isErrorOut="true"
+                  name="Oracle Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ID]"
+                      name="ID"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ID_USUARIO]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID_USUARIO]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ID_USUARIO]"
+                      name="ID_USUARIO"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ID_OPERADOR]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[ID_OPERADOR]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ID_OPERADOR]"
+                      name="ID_OPERADOR"
+                      precision="16" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[FECHA]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[FECHA]"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[FECHA]"
+                      name="FECHA" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[TIPO]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[TIPO]"
+                      length="20"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[TIPO]"
+                      name="TIPO" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[MOTIVO]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output].ExternalColumns[MOTIVO]"
+                      length="1000"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[MOTIVO]"
+                      name="MOTIVO" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_USUARIOS_BLOQUEOS.Paths[Data Conversion Output]"
+              endId="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS.Inputs[SQL Server Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT_USUARIOS_BLOQUEOS.Paths[Oracle Source Output]"
+              endId="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion.Inputs[Data Conversion Input]"
+              name="Oracle Source Output"
+              startId="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS.Outputs[Oracle Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\DFT_USUARIOS_CVU"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -40825,7 +41729,7 @@ AND ID_ESTADO = 1</property>
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Load SQL Movimientos"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -40835,14 +41739,35 @@ AND ID_ESTADO = 1</property>
           Language="CSharp"
           ReadWriteVariables="User::SQLQueryMovimientos">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_2f2fa83ab91648ea805909b27a356287")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_2f2fa83ab91648ea805909b27a356287")]
+[assembly: AssemblyCopyright("Copyright @  2025")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -41086,6 +42011,74 @@ namespace ST_2f2fa83ab91648ea805909b27a356287
 	}
 }]]></ProjectItem>
           <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_2f2fa83ab91648ea805909b27a356287.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
             Name="Project"
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
@@ -41134,6 +42127,15 @@ namespace ST_2f2fa83ab91648ea805909b27a356287.Properties {
         }
     }
 }]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="ST_2f2fa83ab91648ea805909b27a356287.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -41220,104 +42222,6 @@ namespace ST_2f2fa83ab91648ea805909b27a356287.Properties {
     </VisualStudio>
   </ProjectExtensions>
 </Project>]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_2f2fa83ab91648ea805909b27a356287")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_2f2fa83ab91648ea805909b27a356287")]
-[assembly: AssemblyCopyright("Copyright @  2025")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Resources.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
-    "rceManager")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
-    "fo")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
-    "):Void")]
-
-namespace ST_2f2fa83ab91648ea805909b27a356287.Properties {
-    
-    
-    /// <summary>
-    ///   A strongly-typed resource class, for looking up localized strings, etc.
-    /// </summary>
-    // This class was auto-generated by the StronglyTypedResourceBuilder
-    // class via a tool like ResGen or Visual Studio.
-    // To add or remove a member, edit your .ResX file then rerun ResGen
-    // with the /str option, or rebuild your VS project.
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    internal class Resources {
-        
-        private static global::System.Resources.ResourceManager resourceMan;
-        
-        private static global::System.Globalization.CultureInfo resourceCulture;
-        
-        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
-        }
-        
-        /// <summary>
-        ///   Returns the cached ResourceManager instance used by this class.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_2f2fa83ab91648ea805909b27a356287.Properties.Resources", typeof(Resources).Assembly);
-                    resourceMan = temp;
-                }
-                return resourceMan;
-            }
-        }
-        
-        /// <summary>
-        ///   Overrides the current thread's CurrentUICulture property for all
-        ///   resource lookups using this strongly typed resource class.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
-                return resourceCulture;
-            }
-            set {
-                resourceCulture = value;
-            }
-        }
-    }
-}]]></ProjectItem>
           <BinaryItem
             Name="ST_2f2fa83ab91648ea805909b27a356287.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
@@ -41448,7 +42352,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE ACCOUNT_ACTIVATION"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="16">
+      DTS:ThreadHint="9">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41465,7 +42369,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE CABAL_TARJETA"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="17">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41482,7 +42386,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE CIUDADES"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="18">
+      DTS:ThreadHint="13">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41499,7 +42403,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE COBROS_LINK"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="13">
+      DTS:ThreadHint="8">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41516,7 +42420,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE COBROS_QR"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="7">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41533,7 +42437,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE CTA_CTE"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41550,7 +42454,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimActivoTelefono"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="20">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41567,7 +42471,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimCtaCte"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41584,7 +42488,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimMovimientos"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41601,7 +42505,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimSaldoUsuario"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41618,7 +42522,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimTipoMov"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="12">
+      DTS:ThreadHint="16">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41635,7 +42539,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimTipoMovimiento"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="9">
+      DTS:ThreadHint="18">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41652,7 +42556,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimTransferencias"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41686,12 +42590,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimUsuarios"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="14">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [suma].[DimUsuarios]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE DimUsuariosBloqueos"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Truncate DimUsuariosBloqueos table"
+      DTS:DTSID="{0E447F4C-7E18-4AF2-926F-12AFF38DD0F0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE DimUsuariosBloqueos"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="21">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{771F9B38-14D0-4BCF-B6DF-2341831A85A8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DimUsuariosBloqueos;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -41703,7 +42624,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DimVerificacionTelefono"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41720,7 +42641,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE DOMICILIOS"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="14">
+      DTS:ThreadHint="7">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41737,7 +42658,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE ESTADOS_MOV"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="15">
+      DTS:ThreadHint="17">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41754,7 +42675,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE MOVIMIENTOS"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="8">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41771,7 +42692,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE SUCURSALES"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="11">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41788,7 +42709,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE TELEFONOS"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41805,7 +42726,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE TIPO_MOV"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="12">
+      DTS:ThreadHint="16">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41822,7 +42743,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE TIPO_PAGO"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="10">
+      DTS:ThreadHint="15">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41839,7 +42760,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE TRANSFERENCIAS"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41856,7 +42777,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE USUARIOS"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="14">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41873,12 +42794,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE USUARIOS_APROBACION"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="10">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{FBCD144E-C80C-4428-B353-BEE98C85712E}"
           SQLTask:SqlStatementSource="DELETE FROM [suma].[USUARIOS_APROBACION]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE USUARIOS_BLOQUEOS"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Truncate USUARIOS_BLOQUEOS table"
+      DTS:DTSID="{45B93250-9943-4C78-AE9F-796F5896F923}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE USUARIOS_BLOQUEOS"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="21">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AE7F97C1-A8A6-4F54-8FE0-F2CFF772EBE8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE USUARIOS_BLOQUEOS;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -41890,7 +42828,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE USUARIOS_CVU"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="20">
+      DTS:ThreadHint="11">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -41907,7 +42845,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE VERIFICACION_TELEFONO"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -42342,6 +43280,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:ObjectName="Constraint 56"
       DTS:To="Package\DFT_CABAL_TARJETA" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 57]"
+      DTS:CreationName=""
+      DTS:DTSID="{41AD9BA5-F147-4CD0-867C-A5E4C60ABF02}"
+      DTS:From="Package\TRUNCATE USUARIOS_BLOQUEOS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 57"
+      DTS:To="Package\DFT_USUARIOS_BLOQUEOS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 58]"
+      DTS:CreationName=""
+      DTS:DTSID="{7DA66198-1BE5-41C7-AA58-B1A34CE1E266}"
+      DTS:From="Package\DFT_USUARIOS_BLOQUEOS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 58"
+      DTS:To="Package\TRUNCATE DimUsuariosBloqueos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 59]"
+      DTS:CreationName=""
+      DTS:DTSID="{4F6A1422-B265-4F69-B843-F28821F1BA4F}"
+      DTS:From="Package\TRUNCATE DimUsuariosBloqueos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 59"
+      DTS:To="Package\DFT_DimUsuariosBloqueos" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
       DTS:DTSID="{B7F8029C-C313-4216-854F-DD51814E4E5A}"
@@ -42385,7 +43347,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="256" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="233,42"
           Id="Package\DFT_ACCOUNT_ACTIVATION"
@@ -43821,130 +44783,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="538.5,191">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="306.5,148"
-              Start="0,0"
-              End="306.5,140.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,70"
-                    Point2="0,74"
-                    Point3="4,74" />
-                  <mssgle:LineSegment
-                    End="302.5,74" />
-                  <mssgle:CubicBezierSegment
-                    Point1="302.5,74"
-                    Point2="306.5,74"
-                    Point3="306.5,78" />
-                  <mssgle:LineSegment
-                    End="306.5,140.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="442.5,285">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="362,54"
-              Start="0,0"
-              End="362,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.4440154440154" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.4440154440154"
-                    Point2="0,35.4440154440154"
-                    Point3="4,35.4440154440154" />
-                  <mssgle:LineSegment
-                    End="358,35.4440154440154" />
-                  <mssgle:CubicBezierSegment
-                    Point1="358,35.4440154440154"
-                    Point2="362,35.4440154440154"
-                    Point3="362,39.4440154440154" />
-                  <mssgle:LineSegment
-                    End="362,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="462,362">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="42,0"
-              Start="0,0"
-              End="34.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="34.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="671.666666666667,91">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="213.833333333333,248"
-              Start="0,0"
-              End="213.833333333333,240.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,136.323516266154" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,136.323516266154"
-                    Point2="0,140.323516266154"
-                    Point3="4,140.323516266154" />
-                  <mssgle:LineSegment
-                    End="209.833333333333,140.323516266154" />
-                  <mssgle:CubicBezierSegment
-                    Point1="209.833333333333,140.323516266154"
-                    Point2="213.833333333333,140.323516266154"
-                    Point3="213.833333333333,144.323516266154" />
-                  <mssgle:LineSegment
-                    End="213.833333333333,240.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 51]"
           TopLeft="408.5,716">
           <EdgeLayout.Curve>
@@ -44130,6 +44968,212 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="538.5,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="306.5,148"
+              Start="0,0"
+              End="306.5,140.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70"
+                    Point2="0,74"
+                    Point3="4,74" />
+                  <mssgle:LineSegment
+                    End="302.5,74" />
+                  <mssgle:CubicBezierSegment
+                    Point1="302.5,74"
+                    Point2="306.5,74"
+                    Point3="306.5,78" />
+                  <mssgle:LineSegment
+                    End="306.5,140.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="442.5,285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="362,54"
+              Start="0,0"
+              End="362,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.4440154440154" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.4440154440154"
+                    Point2="0,35.4440154440154"
+                    Point3="4,35.4440154440154" />
+                  <mssgle:LineSegment
+                    End="358,35.4440154440154" />
+                  <mssgle:CubicBezierSegment
+                    Point1="358,35.4440154440154"
+                    Point2="362,35.4440154440154"
+                    Point3="362,39.4440154440154" />
+                  <mssgle:LineSegment
+                    End="362,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="462,362">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42,0"
+              Start="0,0"
+              End="34.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="671.666666666667,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="213.833333333333,248"
+              Start="0,0"
+              End="213.833333333333,240.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,136.323516266154" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,136.323516266154"
+                    Point2="0,140.323516266154"
+                    Point3="4,140.323516266154" />
+                  <mssgle:LineSegment
+                    End="209.833333333333,140.323516266154" />
+                  <mssgle:CubicBezierSegment
+                    Point1="209.833333333333,140.323516266154"
+                    Point2="213.833333333333,140.323516266154"
+                    Point3="213.833333333333,144.323516266154" />
+                  <mssgle:LineSegment
+                    End="213.833333333333,240.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="267,42"
+          Id="Package\TRUNCATE USUARIOS_BLOQUEOS"
+          TopLeft="20,1626" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\DFT_USUARIOS_BLOQUEOS"
+          TopLeft="322,1622" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\TRUNCATE DimUsuariosBloqueos"
+          TopLeft="615,1616" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\DFT_DimUsuariosBloqueos"
+          TopLeft="974,1612" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 57]"
+          TopLeft="287,1645">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,0"
+              Start="0,0"
+              End="27.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 58]"
+          TopLeft="554,1640">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61,0"
+              Start="0,0"
+              End="53.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 59]"
+          TopLeft="866,1635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108,0"
+              Start="0,0"
+              End="100.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="100.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -44250,7 +45294,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package\DFT_CABAL_TARJETA">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="195,42"
           Id="Package\DFT_CABAL_TARJETA\SQL CABAL_TARJETA"
@@ -44294,9 +45338,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -44324,9 +45366,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -45084,9 +46124,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -50707,6 +51745,224 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DTF_DimVerificacionTelefono\SQL DimVerificacionTelefono">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_USUARIOS_BLOQUEOS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS"
+          TopLeft="15,13" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT_USUARIOS_BLOQUEOS\Data Conversion"
+          TopLeft="242,77" />
+        <EdgeLayout
+          Id="Package\DFT_USUARIOS_BLOQUEOS.Paths[Oracle Source Output]"
+          TopLeft="219,34">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,64"
+              Start="0,0"
+              End="15.5,64">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="7.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.5,0"
+                    Point2="11.5,0"
+                    Point3="11.5,4" />
+                  <mssgle:LineSegment
+                    End="11.5,60" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,60"
+                    Point2="11.5,64"
+                    Point3="15.5,64" />
+                  <mssgle:LineSegment
+                    End="15.5,64" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="229,42"
+          Id="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS"
+          TopLeft="439,154" />
+        <EdgeLayout
+          Id="Package\DFT_USUARIOS_BLOQUEOS.Paths[Data Conversion Output]"
+          TopLeft="322.5,119">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="231,35"
+              Start="0,0"
+              End="231,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="227,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="227,17.5"
+                    Point2="231,17.5"
+                    Point3="231,21.5" />
+                  <mssgle:LineSegment
+                    End="231,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_DimUsuariosBloqueos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\DFT_DimUsuariosBloqueos\AyJ Staging"
+          TopLeft="65,60" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT_DimUsuariosBloqueos\Data Conversion"
+          TopLeft="269,133" />
+        <EdgeLayout
+          Id="Package\DFT_DimUsuariosBloqueos.Paths[OLE DB Source Output]"
+          TopLeft="134,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="215.5,31"
+              Start="0,0"
+              End="215.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="211.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="211.5,15.5"
+                    Point2="215.5,15.5"
+                    Point3="215.5,19.5" />
+                  <mssgle:LineSegment
+                    End="215.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="213,42"
+          Id="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos"
+          TopLeft="492,206" />
+        <EdgeLayout
+          Id="Package\DFT_DimUsuariosBloqueos.Paths[Data Conversion Output]"
+          TopLeft="349.5,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="249,31"
+              Start="0,0"
+              End="249,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="245,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="245,15.5"
+                    Point2="249,15.5"
+                    Point3="249,19.5" />
+                  <mssgle:LineSegment
+                    End="249,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_USUARIOS_BLOQUEOS\USUARIOS_BLOQUEOS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_USUARIOS_BLOQUEOS\SQL USUARIOS_BLOQUEOS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimUsuariosBloqueos\AyJ Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DimUsuariosBloqueos\SQL DimUsuariosBloqueos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
