@@ -120,7 +120,7 @@ GO
 USE [AyJStaging]
 GO
 
-/****** Object:  Table [dbo].[PRE_PLAN_PAGO_ALICUOTA]    Script Date: 1/28/2026 11:56:54 AM ******/
+/****** Object:  Table [dbo].[PRE_PLAN_PAGO_ALICUOTA]    Script Date: 2/11/2026 9:06:42 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -129,47 +129,8 @@ GO
 
 CREATE TABLE [dbo].[PRE_PLAN_PAGO_ALICUOTA](
 	[ID] [numeric](10, 0) NULL,
-	[NOMBRE] [varchar](40) NULL,
-	[ACTIVO] [varchar](1) NULL,
-	[BASE] [varchar](2) NULL,
-	[ID_FORMA_LIQUI] [numeric](10, 0) NULL,
-	[ID_CUENTA] [numeric](10, 0) NULL,
-	[ADELANTA] [varchar](1) NULL,
-	[BONIFICA] [numeric](10, 2) NULL,
-	[RENUEVA] [varchar](1) NULL,
-	[ID_GRADO_MORA] [numeric](10, 0) NULL,
-	[DESTINO] [varchar](13) NULL,
-	[DISPONIBLE_COMPRA] [varchar](50) NULL,
-	[DISPONIBLE_CREDITO] [varchar](50) NULL,
-	[TOPE] [numeric](12, 2) NULL,
-	[TOPE_MIN] [numeric](12, 2) NULL,
-	[MODIFICA_COEFICIENTE] [varchar](1) NULL,
-	[PAGO_ADELANTADO] [varchar](5) NULL,
-	[ID_GRUPO_CIERRE] [numeric](10, 0) NULL,
-	[DIA_DIFIERE] [smallint] NULL,
-	[ID_MONEDA] [numeric](10, 0) NULL,
-	[ANTIGUEDAD_NECESARIA] [numeric](10, 0) NULL,
-	[ID_CUENTA_INTERES] [numeric](10, 0) NULL,
-	[ID_CONDICION] [numeric](10, 0) NULL,
-	[TOPE_PORCE] [numeric](13, 2) NULL,
-	[ID_GRUPO_CTA] [numeric](10, 0) NULL,
-	[CON_PRESTAMO_ANT] [varchar](1) NULL,
-	[PORCE_CANCELADO] [numeric](5, 2) NULL,
-	[CANT_CUOTAS_CANCEL] [numeric](10, 0) NULL,
-	[CANTIDAD_PRE] [numeric](10, 0) NULL,
-	[ID_PLAN_PRE] [numeric](10, 0) NULL,
-	[CLIENTE_NUEVO] [varchar](1) NULL,
-	[ANTIGUEDAD] [numeric](10, 0) NULL,
-	[CANTIDAD_RESUMEN] [numeric](10, 0) NULL,
-	[ID_MORA_HISTORICA] [numeric](10, 0) NULL,
-	[MORA_VECES] [numeric](10, 0) NULL,
-	[MORA_MESES] [numeric](10, 0) NULL,
-	[BLOQUEA_OP_PRE] [varchar](1) NULL,
-	[ID_PRE_POLITICA_PRECIOS] [numeric](10, 0) NULL,
-	[AUTOPRESTAMO] [varchar](2) NULL,
-	[FERTILSUMA] [varchar](2) NULL,
-	[OCULTO_PRE] [varchar](1) NULL,
-	[PERIODO] [varchar](10) NULL
+	[ID_PLAN_PAGO_DETALLE] [numeric](10, 0) NULL,
+	[ID_ALICUOTA] [numeric](10, 0) NULL
 ) ON [PRIMARY]
 GO
 
@@ -510,5 +471,42 @@ CREATE TABLE [suma].[DimUsuariosBloqueos](
 	[Fecha] [datetime] NULL,
 	[Tipo] [varchar](20) NULL,
 	[Motivo] [varchar](1000) NULL
+) ON [PRIMARY]
+GO
+
+USE [AyJDW]
+GO
+
+/****** Object:  Table [dbo].[FactAutorizacionesPrestamosCli]    Script Date: 2/12/2026 3:19:56 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FactAutorizacionesPrestamosCli](
+	[Id] [numeric](10, 0) NULL,
+	[Cod_Liquidacion] [numeric](10, 0) NULL,
+	[Nro_Cuota] [numeric](10, 0) NULL,
+	[Importe] [numeric](15, 2) NULL,
+	[Vencimiento] [datetime2](7) NULL,
+	[Codop] [numeric](10, 0) NULL,
+	[Numop] [numeric](10, 0) NULL,
+	[IVA] [numeric](7, 2) NULL,
+	[Importe_IVA] [numeric](14, 2) NULL,
+	[Total_Descuento] [numeric](14, 2) NULL,
+	[Cod_Autorizacion] [numeric](10, 0) NULL,
+	[Credito] [numeric](14, 2) NULL,
+	[Importe_Cuota] [numeric](12, 2) NULL,
+	[Cod_Cliente] [numeric](10, 0) NULL,
+	[Cod_Empresa] [numeric](10, 0) NULL,
+	[Cod_Sucursal] [numeric](10, 0) NULL,
+	[Anulada] [numeric](10, 0) NULL,
+	[Fecha_Prestamo] [datetime2](7) NULL,
+	[Cuotas] [numeric](10, 0) NULL,
+	[Cod_Plan] [numeric](10, 0) NULL,
+	[Cod_Promocion] [numeric](10, 0) NULL,
+	[Total] [numeric](15, 2) NULL,
+	[Interes] [numeric](15, 2) NULL
 ) ON [PRIMARY]
 GO
