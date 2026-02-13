@@ -501,6 +501,7 @@ CREATE TABLE [dbo].[FactAutorizacionesPrestamosCli](
 	[Cod_Cliente] [numeric](10, 0) NULL,
 	[Cod_Empresa] [numeric](10, 0) NULL,
 	[Cod_Sucursal] [numeric](10, 0) NULL,
+	[Cod_Prestamos_Autorizaciones] [numeric](10, 0) NULL,
 	[Anulada] [numeric](10, 0) NULL,
 	[Fecha_Prestamo] [datetime2](7) NULL,
 	[Cuotas] [numeric](10, 0) NULL,
