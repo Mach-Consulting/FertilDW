@@ -516,7 +516,7 @@ ALTER TABLE FactAutorizacionesPrestamos ADD Tasa_Mensual numeric(15, 8) NULL
 GO
 
 ALTER TABLE FactPagosClientes 
-ADD CODOP_Entrega numeric(10, 0), NUMOP_Entrega numeric(10,0)
+ADD CODOP_Entrega numeric(10, 0), NUMOP_Entrega numeric(10,0), Cod_Sucursal numeric(10,0)
 GO
 
 USE [AyJStaging]
@@ -563,4 +563,106 @@ CREATE TABLE [dbo].[DimFideicomisoGeneracionCuotas](
 	[Prestamo] [numeric](10, 0) NULL,
 	[Nro_Cuota] [numeric](10, 0) NULL
 ) ON [PRIMARY]
+GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[TIPOINSCRIPTO]    Script Date: 2/19/2026 12:39:26 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TIPOINSCRIPTO](
+	[ID] [numeric](10, 0) NULL,
+	[NOMBRE] [varchar](40) NULL,
+	[CODIGO_AFIP] [varchar](2) NULL,
+	[TIPO] [varchar](5) NULL
+) ON [PRIMARY]
+GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[CATEGORIA_CLIENTE]    Script Date: 2/19/2026 12:45:10 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CATEGORIA_CLIENTE](
+	[ID] [numeric](10, 0) NULL,
+	[CODIGO] [varchar](2) NULL,
+	[NOMBRE] [varchar](60) NULL,
+	[DESDE] [numeric](10, 0) NULL,
+	[HASTA] [numeric](10, 0) NULL,
+	[PREDETERMINADA] [numeric](10, 0) NULL,
+	[IMPORTE] [numeric](12, 2) NULL,
+	[IMPORTE_SERVICIO] [numeric](12, 2) NULL,
+	[PRE_AFECTACION] [numeric](12, 2) NULL
+) ON [PRIMARY]
+GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[CARGOS_LAB]    Script Date: 2/19/2026 12:48:06 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CARGOS_LAB](
+	[ID] [numeric](10, 0) NULL,
+	[NOMBRE] [varchar](40) NULL
+) ON [PRIMARY]
+GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[SECTOR_LABORAL]    Script Date: 2/19/2026 1:16:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SECTOR_LABORAL](
+	[ID] [numeric](10, 0) NULL,
+	[NOMBRE] [varchar](60) NULL
+) ON [PRIMARY]
+GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[OCUPACION]    Script Date: 2/19/2026 1:22:09 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[OCUPACION](
+	[ID] [numeric](10, 0) NULL,
+	[NOMBRE] [varchar](40) NULL,
+	[CODIGO] [varchar](10) NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE DimCliente ADD 
+	Cod_Estado numeric(10,0),
+	Nacionalidad nvarchar(40),
+	Tipo_Inscripto varchar(40),
+	Categoria varchar(60),
+	Categoria_Codigo varchar(2),
+	Cargo_Lab varchar(40),
+	Sector_Lab varchar(60),
+	Estado_Cta nvarchar(40),
+	Ocupacion varchar(40)
 GO
