@@ -511,3 +511,56 @@ CREATE TABLE [dbo].[FactAutorizacionesPrestamosCli](
 	[Interes] [numeric](15, 2) NULL
 ) ON [PRIMARY]
 GO
+
+ALTER TABLE FactAutorizacionesPrestamos ADD Tasa_Mensual numeric(15, 8) NULL
+GO
+
+ALTER TABLE FactPagosClientes 
+ADD CODOP_Entrega numeric(10, 0), NUMOP_Entrega numeric(10,0)
+GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[FIDEICOMISO_GENERACION_CUOTAS]    Script Date: 2/18/2026 4:48:20 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FIDEICOMISO_GENERACION_CUOTAS](
+	[ID] [numeric](10, 0) NULL,
+	[CODOP] [numeric](10, 0) NULL,
+	[NUMOP] [numeric](10, 0) NULL,
+	[VENCIMIENTO] [datetime] NULL,
+	[ID_CLIENTE] [numeric](10, 0) NULL,
+	[VALOR_NOMINAL] [numeric](10, 2) NULL,
+	[VALOR_ACTUAL] [numeric](10, 2) NULL,
+	[PRESTAMO] [numeric](10, 0) NULL,
+	[NRO_CUOTA] [numeric](10, 0) NULL
+) ON [PRIMARY]
+GO
+
+USE [AyJDW]
+GO
+
+/****** Object:  Table [dbo].[DimFideicomisoGeneracionCuotas]    Script Date: 2/18/2026 5:37:54 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DimFideicomisoGeneracionCuotas](
+	[Id] [numeric](10, 0) NULL,
+	[CODOP] [numeric](10, 0) NULL,
+	[NUMOP] [numeric](10, 0) NULL,
+	[Vencimiento] [datetime] NULL,
+	[Cod_Cliente] [numeric](10, 0) NULL,
+	[Valor_Nominal] [numeric](10, 2) NULL,
+	[Valor_Actual] [numeric](10, 2) NULL,
+	[Prestamo] [numeric](10, 0) NULL,
+	[Nro_Cuota] [numeric](10, 0) NULL
+) ON [PRIMARY]
+GO
