@@ -666,3 +666,7 @@ ALTER TABLE DimCliente ADD
 	Estado_Cta nvarchar(40),
 	Ocupacion varchar(40)
 GO
+
+ALTER TABLE DimGeografia ADD 
+	Codigo_Postal nvarchar(10)
+GO
