@@ -668,5 +668,6 @@ ALTER TABLE DimCliente ADD
 GO
 
 ALTER TABLE DimGeografia ADD 
-	Codigo_Postal nvarchar(10)
+	Codigo_Postal nvarchar(10),
+        Celular nvarchar(30)
 GO
