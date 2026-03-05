@@ -671,3 +671,40 @@ ALTER TABLE DimGeografia ADD
 	Codigo_Postal nvarchar(10),
         Celular nvarchar(30)
 GO
+
+USE [AyJStaging]
+GO
+
+/****** Object:  Table [dbo].[COMOCOBRO]    Script Date: 3/5/2026 11:34:57 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[COMOCOBRO](
+	[ID] [numeric](10, 0) NULL,
+	[ID_VALORES] [numeric](10, 0) NULL,
+	[CODOP] [numeric](10, 0) NULL,
+	[NUMOP] [numeric](10, 0) NULL,
+	[IMPORTE] [numeric](12, 2) NULL,
+	[VTO] [datetime2](7) NULL,
+	[NROCHEQUE] [varchar](20) NULL,
+	[ID_BANCO] [numeric](10, 0) NULL,
+	[ID_LOCALIDAD] [numeric](10, 0) NULL,
+	[TIPO] [varchar](1) NULL,
+	[FIRMANTE] [varchar](25) NULL,
+	[CUIT] [varchar](13) NULL,
+	[ANULADA] [numeric](10, 0) NULL,
+	[CODOP_OP] [numeric](10, 0) NULL,
+	[NUMOP_OP] [numeric](10, 0) NULL,
+	[NUMERO] [numeric](10, 0) NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE FactCobros
+ADD Importe_Como_Cobro numeric(12, 2),
+	Tipo_Cobro varchar(1),
+	Nombre_Valores varchar(40),
+	Codigo_Valores varchar(1)
+GO
